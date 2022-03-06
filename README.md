@@ -6,7 +6,7 @@ Ik zou graag een <b>basis functionaliteit</b>, dus toegang tot alle recepten, vo
 
 <p>Hiervoor zal ik een database maken waar ik alle recepten zal opslaan, waarschijnlijk zal het een <b>NO SQL database</b> zijn.  Ik zal een <b>Bottom Tab Navigation</b> gebruiken en eventueel ook nog een <b>Stack Navigation</b> indien ik recepten ‘stap voor stap’ zal doen. </p>
 
-<p>Ik heb voor dit onderwerp gekozen omdat ik dol ben op bakken, het zou ook een interessante uitbreiding zijn op mijn hobby-pagina op facebook: <a href="https://www.facebook.com/CakeTime-by-Klaudia-101815985445170/">CakeTime by Klaudia</a></p>
+<p>Ik heb voor dit onderwerp gekozen omdat ik dol ben op bakken, het zou ook een interessante uitbreiding zijn op mijn hobby-pagina op Facebook: <a href="https://www.facebook.com/CakeTime-by-Klaudia-101815985445170/">CakeTime by Klaudia</a></p>
 
 <p>Ik heb een paar voorbeelden qua UI opgezocht, een van de meest boeiende vind ik deze:
 
