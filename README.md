@@ -4,7 +4,7 @@
 
 Ik zou graag een <b>basis functionaliteit</b>, dus toegang tot alle recepten, voor iedereen beschikbaar maken zonder dat er een account aangemaakt moet worden. Optie tot het aanmaken van een recept of recepten toevoegen aan favorieten (<i>nice-to-have?</i>) zou mogelijk zijn pas nadat je ingelogd bent. (<i>Graag hierbij een feedback of het haalbaar is, op dit moment heb ik helemaal geen idee hoe ik dit kan aanpakken…</i>) </p>
 
-<p>Hiervoor zal ik een database maken waar ik alle recepten zal opslaan, waarschijnlijk zal het een <b>NO SQL database</b> zijn.  Ik zal een <b>Bottom Tab Navigation</b> gebruiken en ook nog <b>Stack Navigation</b> indien ik recepten ‘stap voor stap’ zal doen. </p>
+<p>Hiervoor zal ik een database maken waar ik alle recepten zal opslaan, waarschijnlijk zal het een <b>NO SQL database</b> zijn.  Ik zal een <b>Bottom Tab Navigation</b> gebruiken en ook nog <b>Stack Navigation</b></p>
 
 <p>Ik heb voor dit onderwerp gekozen omdat ik dol ben op bakken, het zou ook een interessante uitbreiding zijn op mijn hobby-pagina op Facebook: <a href="https://www.facebook.com/CakeTime-by-Klaudia-101815985445170/">CakeTime by Klaudia</a></p>
 
