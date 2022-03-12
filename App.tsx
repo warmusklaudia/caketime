@@ -1,13 +1,12 @@
-import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { StackCake } from './screens'
+import { MyStack } from './screens'
 
 export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <StackCake />
+        <MyStack />
       </NavigationContainer>
     </SafeAreaProvider>
   )
