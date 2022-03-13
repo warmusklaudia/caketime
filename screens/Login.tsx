@@ -3,7 +3,8 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
-import { styles } from '../styling/caketime'
+import { styles, typo } from '../styling/caketime'
+import { colors } from '../styling/colors'
 
 export const Login = () => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
@@ -27,8 +28,8 @@ export const Login = () => {
           onChangeText={(email) => setEmail(email)}
           containerStyles={styles.containerStyles}
           customLabelStyles={{
-            colorBlurred: '#949494',
-            colorFocused: '#5F5F5F',
+            colorBlurred: colors.neutral,
+            colorFocused: colors.neutral_dark_x,
           }}
         />
       </View>
@@ -40,19 +41,22 @@ export const Login = () => {
           onChangeText={(pass) => setPass(pass)}
           containerStyles={styles.containerStyles}
           customLabelStyles={{
-            colorBlurred: '#949494',
-            colorFocused: '#5F5F5F',
+            colorBlurred: colors.neutral,
+            colorFocused: colors.neutral_dark_x,
           }}
         />
       </View>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.textButton}>Login</Text>
+      <TouchableOpacity style={styles.buttonLogin}>
+        <Text style={typo.textButton}>LOGIN</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text>Sign up</Text>
+      <TouchableOpacity style={styles.subButton}>
+        <Text style={typo.textSubButton}>SIGN UP</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigate('Welcome')}>
-        <Text>Skip</Text>
+      <TouchableOpacity
+        style={styles.subButton}
+        onPress={() => navigate('Welcome')}
+      >
+        <Text style={typo.textSubButton}>SKIP</Text>
       </TouchableOpacity>
     </View>
   )
