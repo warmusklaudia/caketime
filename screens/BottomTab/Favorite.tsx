@@ -1,9 +1,10 @@
 import { Text, View } from 'react-native'
+import { styles, typo } from '../../styling/caketime'
 
 export const FavoritesScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Favorites</Text>
+    <View style={styles.container}>
+      <Text style={typo.pageTitle}>My favorite recipes</Text>
     </View>
   )
 }

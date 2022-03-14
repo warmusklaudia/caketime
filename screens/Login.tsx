@@ -20,7 +20,7 @@ export const Login = () => {
   }, [show])
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containerLogin}>
       <View style={styles.label}>
         <FloatingLabelInput
           label={'Email'}

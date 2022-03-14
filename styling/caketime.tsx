@@ -22,11 +22,27 @@ export const styles = StyleSheet.create({
     flex: 1,
     margin: 2.5 * sizing.baseLine,
     alignItems: 'center',
+  },
+  containerLogin: {
+    flex: 1,
+    margin: 2.5 * sizing.baseLine,
+    alignItems: 'center',
     justifyContent: 'center',
   },
   containerWelcome: {
     flex: 1,
     marginTop: 5 * sizing.baseLine,
+  },
+  containerStyles: {
+    borderBottomWidth: 2,
+    height: 6 * sizing.baseLine,
+    borderColor: colors.neutral,
+  },
+  categorySection: {
+    margin: 60,
+  },
+  specialSection: {
+    margin: 40,
   },
   buttonHolder: {
     flex: 1,
@@ -61,14 +77,40 @@ export const styles = StyleSheet.create({
   subButton: {
     marginBottom: sizing.baseLine,
   },
+  buttonAdd: {
+    marginTop: 2 * sizing.baseLine,
+    borderWidth: 1,
+    borderColor: colors.beta_dark,
+    borderRadius: sizing.baseLine / 2,
+    backgroundColor: colors.beta,
+    width: 170,
+    height: 5 * sizing.baseLine,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   label: {
     margin: sizing.baseLine,
     width: '70%',
   },
-  containerStyles: {
-    borderBottomWidth: 2,
-    height: 6 * sizing.baseLine,
+
+  input: {
+    borderWidth: 1,
     borderColor: colors.neutral,
+    borderRadius: sizing.baseLine / 2,
+    width: '90%',
+    height: 5 * sizing.baseLine,
+    padding: sizing.baseLine,
+  },
+  inputSearchSection: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.neutral,
+    borderRadius: sizing.baseLine / 2,
+    width: '80%',
+    height: 5 * sizing.baseLine,
+    padding: sizing.baseLine,
   },
 })
 
@@ -82,12 +124,21 @@ export const typo = StyleSheet.create({
     marginBottom: 8 * sizing.baseLine,
     color: colors.alpha,
   },
-  title: {
+  welcome: {
     fontSize: 3 * sizing.baseLine,
     paddingLeft: 4 * sizing.baseLine,
   },
-  subtitle: {
+  subWelcome: {
     paddingLeft: 4 * sizing.baseLine,
+    paddingBottom: 2 * sizing.baseLine,
+  },
+  category: {
+    fontSize: 2.25 * sizing.baseLine,
+    paddingLeft: 4 * sizing.baseLine,
+    fontWeight: '700',
+  },
+  pageTitle: {
+    fontSize: 3 * sizing.baseLine,
   },
   textButton: {
     fontSize: 1.75 * sizing.baseLine,
