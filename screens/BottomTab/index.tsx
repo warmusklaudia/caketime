@@ -16,6 +16,7 @@ export const MyTabs = () => {
       initialRouteName="Recipe"
       activeColor={colors.alpha}
       barStyle={{ backgroundColor: colors.white }}
+      inactiveColor={colors.neutral}
     >
       <Tab.Screen
         name="Home"

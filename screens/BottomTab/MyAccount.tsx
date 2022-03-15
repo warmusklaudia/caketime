@@ -1,8 +1,9 @@
 import { Text, View } from 'react-native'
+import { styles } from '../../styling/caketime'
 export const MyAccountScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>My account</Text>
+    <View style={styles.container}>
+      <Text>TODO: My account</Text>
     </View>
   )
 }

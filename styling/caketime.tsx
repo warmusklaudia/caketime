@@ -47,9 +47,8 @@ export const styles = StyleSheet.create({
   buttonHolder: {
     flex: 1,
     margin: 2 * sizing.baseLine,
-    paddingBottom: 5 * sizing.baseLine,
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
   button: {
     margin: sizing.baseLine / 2,
@@ -64,7 +63,7 @@ export const styles = StyleSheet.create({
   },
   buttonLogin: {
     marginTop: 2 * sizing.baseLine,
-    marginBottom: 1.5 * sizing.baseLine,
+    marginBottom: 3 * sizing.baseLine,
     borderWidth: 1,
     borderColor: colors.beta_dark,
     borderRadius: sizing.baseLine / 2,
@@ -75,7 +74,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.beta,
   },
   subButton: {
-    marginBottom: sizing.baseLine,
+    marginBottom: sizing.baseLine * 2,
   },
   buttonAdd: {
     marginTop: 2 * sizing.baseLine,

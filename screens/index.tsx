@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native'
 import { MyTabs } from './BottomTab'
 import { GetStarted } from './GetStarted'
 import { Login } from './Login'
+import { SignUp } from './SignUp'
 import { Welcome } from './Welcome'
 const Stack = createStackNavigator()
 const screenOptions: StackNavigationOptions = {
@@ -17,6 +18,7 @@ export const MyStack = () => {
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name="GetStarted" component={GetStarted} />
       <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="TabNav" component={MyTabs} />
     </Stack.Navigator>
