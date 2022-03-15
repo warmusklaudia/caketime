@@ -31,6 +31,7 @@ export const Login = () => {
             colorBlurred: colors.neutral,
             colorFocused: colors.neutral_dark_x,
           }}
+          keyboardType="email-address"
         />
       </View>
       <View style={styles.label}>

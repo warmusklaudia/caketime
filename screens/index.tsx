@@ -2,12 +2,14 @@ import {
   createStackNavigator,
   StackNavigationOptions,
 } from '@react-navigation/stack'
-import { SafeAreaView } from 'react-native'
+import { colors } from '../styling/colors'
 import { MyTabs } from './BottomTab'
 import { GetStarted } from './GetStarted'
 import { Login } from './Login'
 import { SignUp } from './SignUp'
 import { Welcome } from './Welcome'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Text } from 'react-native'
 const Stack = createStackNavigator()
 const screenOptions: StackNavigationOptions = {
   headerShown: false,

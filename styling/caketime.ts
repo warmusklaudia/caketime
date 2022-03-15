@@ -1,17 +1,5 @@
-import AppLoading from 'expo-app-loading'
-import { useFonts } from 'expo-font'
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 import { colors } from './colors'
-
-export const loadFont = () => {
-  let [fontsLoaded] = useFonts({
-    'Roboto-Regular': require('../assets/fonts/Roboto-Regular.ttf'),
-  })
-
-  if (!fontsLoaded) {
-    return <AppLoading />
-  }
-}
 
 export const sizing = {
   baseLine: 8,
@@ -43,6 +31,9 @@ export const styles = StyleSheet.create({
   },
   specialSection: {
     margin: 40,
+  },
+  imgHolder: {
+    elevation: 5,
   },
   buttonHolder: {
     flex: 1,
@@ -87,6 +78,42 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonAddPhoto: {
+    marginTop: -2.5 * sizing.baseLine,
+    marginBottom: 2.5 * sizing.baseLine,
+    borderWidth: 1,
+    borderColor: colors.neutral,
+    backgroundColor: colors.white,
+    borderRadius: 100,
+    width: 5.25 * sizing.baseLine,
+    height: 5.25 * sizing.baseLine,
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: colors.neutral_dark_x,
+        shadowOffset: {
+          width: 0,
+          height: 6,
+        },
+        shadowOpacity: 0.8,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 5,
+      },
+    }),
+  },
+  buttonProfile: {
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: colors.neutral_light,
+    width: '100%',
+    height: 7 * sizing.baseLine,
+    justifyContent: 'center',
+    padding: sizing.baseLine,
+    marginTop: 2.5 * sizing.baseLine,
+  },
   label: {
     margin: sizing.baseLine,
     width: '70%',
@@ -111,13 +138,22 @@ export const styles = StyleSheet.create({
     height: 5 * sizing.baseLine,
     padding: sizing.baseLine,
   },
+  picker: {
+    height: 4 * sizing.baseLine,
+    width: '50%',
+    borderColor: colors.beta,
+    borderWidth: 1,
+  },
+  img: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    borderWidth: 1,
+    borderColor: colors.alpha_light,
+  },
 })
 
 export const typo = StyleSheet.create({
-  name: {
-    fontSize: 5 * sizing.baseLine,
-    color: colors.alpha_dark,
-  },
   intro: {
     fontSize: 2.5 * sizing.baseLine,
     marginBottom: 8 * sizing.baseLine,
@@ -139,6 +175,13 @@ export const typo = StyleSheet.create({
   pageTitle: {
     fontSize: 3 * sizing.baseLine,
   },
+  name: {
+    fontSize: 2.5 * sizing.baseLine,
+  },
+  email: {
+    fontSize: 2 * sizing.baseLine,
+    paddingBottom: 3 * sizing.baseLine,
+  },
   textButton: {
     fontSize: 1.75 * sizing.baseLine,
     color: colors.white,
@@ -146,5 +189,8 @@ export const typo = StyleSheet.create({
   textSubButton: {
     fontSize: 1.75 * sizing.baseLine,
     color: colors.neutral_dark_x,
+  },
+  textButtonProfile: {
+    fontSize: 2.25 * sizing.baseLine,
   },
 })
