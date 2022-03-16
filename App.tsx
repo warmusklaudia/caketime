@@ -1,13 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native'
 import AppLoading from 'expo-app-loading'
-import { useFonts } from 'expo-font'
+import {
+  useFonts,
+  DancingScript_400Regular,
+} from '@expo-google-fonts/dancing-script'
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { MyStack } from './screens'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
-    'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
+    DancingScript_400Regular,
   })
   if (!fontsLoaded) {
     return <AppLoading />

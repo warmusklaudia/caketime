@@ -65,9 +65,10 @@ export const styles = StyleSheet.create({
 
 export const typo = StyleSheet.create({
   intro: {
-    fontSize: 2.5 * sizing.baseLine,
+    fontSize: 3.5 * sizing.baseLine,
     marginBottom: 8 * sizing.baseLine,
     color: colors.alpha,
+    fontFamily: 'DancingScript_400Regular',
   },
   welcome: {
     fontSize: 3 * sizing.baseLine,

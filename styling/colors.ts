@@ -13,5 +13,5 @@ export const colors = {
   neutral_dark: '#4D494A',
   neutral_dark_x: '#1A1718',
 
-  white: '#fff',
+  white: '#fdfdfd',
 }
