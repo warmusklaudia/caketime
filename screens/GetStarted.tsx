@@ -4,13 +4,14 @@ import { Animated, Text, TouchableOpacity, View } from 'react-native'
 import Svg, { Ellipse, G, Path, Rect } from 'react-native-svg'
 import { styles, typo } from '../styling/caketime'
 import { Dimensions } from 'react-native'
+import buttons from '../styling/buttons'
 
 export const GetStarted = () => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   const windowWidth = Dimensions.get('window').width
   const windowHeight = Dimensions.get('window').height
   return (
-    <View style={styles.buttonHolder}>
+    <View style={styles.containerStart}>
       <View>
         <Svg
           width={windowWidth / 1.25}
@@ -941,7 +942,7 @@ export const GetStarted = () => {
       </View>
       <Text style={typo.intro}>Start baking delicious desserts</Text>
       <TouchableOpacity
-        style={styles.button}
+        style={buttons.buttonGetStarted}
         onPress={() => {
           navigate('Login')
         }}

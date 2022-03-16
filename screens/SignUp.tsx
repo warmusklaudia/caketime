@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
+import buttons from '../styling/buttons'
 import { styles, typo } from '../styling/caketime'
 import { colors } from '../styling/colors'
 
@@ -10,7 +11,7 @@ export const SignUp = () => {
   const [pass, setPass] = useState('')
   const [confirmPass, setConfirmPass] = useState('')
   return (
-    <View style={styles.containerLogin}>
+    <View style={styles.containerStart}>
       <View style={styles.label}>
         <FloatingLabelInput
           label={'Email'}
@@ -62,7 +63,7 @@ export const SignUp = () => {
           }}
         />
       </View>
-      <TouchableOpacity style={styles.buttonLogin}>
+      <TouchableOpacity style={buttons.buttonLogin}>
         <Text style={typo.textButton}>SIGN UP</Text>
       </TouchableOpacity>
     </View>

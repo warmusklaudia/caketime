@@ -3,6 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
+import buttons from '../styling/buttons'
 import { styles, typo } from '../styling/caketime'
 import { colors } from '../styling/colors'
 
@@ -20,7 +21,7 @@ export const Login = () => {
   }, [show])
 
   return (
-    <View style={styles.containerLogin}>
+    <View style={styles.containerStart}>
       <View style={styles.label}>
         <FloatingLabelInput
           label={'Email'}
@@ -47,17 +48,17 @@ export const Login = () => {
           }}
         />
       </View>
-      <TouchableOpacity style={styles.buttonLogin}>
+      <TouchableOpacity style={buttons.buttonLogin}>
         <Text style={typo.textButton}>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.subButton}
+        style={buttons.subButton}
         onPress={() => navigate('SignUp')}
       >
         <Text style={typo.textSubButton}>SIGN UP</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.subButton}
+        style={buttons.subButton}
         onPress={() => navigate('Welcome')}
       >
         <Text style={typo.textSubButton}>SKIP</Text>

@@ -3,6 +3,7 @@ export const colors = {
   alpha: '#B82A60',
   alpha_dark: '#6B1938',
 
+  beta_light: '#E6C5CD',
   beta: '#D43159',
   beta_dark: '#542D36',
 

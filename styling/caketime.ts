@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     margin: 2.5 * sizing.baseLine,
     alignItems: 'center',
   },
-  containerLogin: {
+  containerStart: {
     flex: 1,
     margin: 2.5 * sizing.baseLine,
     alignItems: 'center',
@@ -35,85 +35,6 @@ export const styles = StyleSheet.create({
   imgHolder: {
     elevation: 5,
   },
-  buttonHolder: {
-    flex: 1,
-    margin: 2 * sizing.baseLine,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    margin: sizing.baseLine / 2,
-    borderWidth: 1,
-    borderRadius: sizing.baseLine / 2,
-    borderColor: colors.beta_dark,
-    width: '70%',
-    height: 7 * sizing.baseLine,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.beta,
-  },
-  buttonLogin: {
-    marginTop: 2 * sizing.baseLine,
-    marginBottom: 3 * sizing.baseLine,
-    borderWidth: 1,
-    borderColor: colors.beta_dark,
-    borderRadius: sizing.baseLine / 2,
-    width: '50%',
-    height: 5 * sizing.baseLine,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.beta,
-  },
-  subButton: {
-    marginBottom: sizing.baseLine * 2,
-  },
-  buttonAdd: {
-    marginTop: 2 * sizing.baseLine,
-    borderWidth: 1,
-    borderColor: colors.beta_dark,
-    borderRadius: sizing.baseLine / 2,
-    backgroundColor: colors.beta,
-    width: 170,
-    height: 5 * sizing.baseLine,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonAddPhoto: {
-    marginTop: -2.5 * sizing.baseLine,
-    marginBottom: 2.5 * sizing.baseLine,
-    borderWidth: 1,
-    borderColor: colors.neutral,
-    backgroundColor: colors.white,
-    borderRadius: 100,
-    width: 5.25 * sizing.baseLine,
-    height: 5.25 * sizing.baseLine,
-    justifyContent: 'center',
-    alignItems: 'center',
-    ...Platform.select({
-      ios: {
-        shadowColor: colors.neutral_dark_x,
-        shadowOffset: {
-          width: 0,
-          height: 6,
-        },
-        shadowOpacity: 0.8,
-        shadowRadius: 4,
-      },
-      android: {
-        elevation: 5,
-      },
-    }),
-  },
-  buttonProfile: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: colors.neutral_light,
-    width: '100%',
-    height: 7 * sizing.baseLine,
-    justifyContent: 'center',
-    padding: sizing.baseLine,
-    marginTop: 2.5 * sizing.baseLine,
-  },
   label: {
     margin: sizing.baseLine,
     width: '70%',
@@ -124,17 +45,6 @@ export const styles = StyleSheet.create({
     borderColor: colors.neutral,
     borderRadius: sizing.baseLine / 2,
     width: '90%',
-    height: 5 * sizing.baseLine,
-    padding: sizing.baseLine,
-  },
-  inputSearchSection: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.neutral,
-    borderRadius: sizing.baseLine / 2,
-    width: '80%',
     height: 5 * sizing.baseLine,
     padding: sizing.baseLine,
   },
@@ -174,12 +84,15 @@ export const typo = StyleSheet.create({
   },
   pageTitle: {
     fontSize: 3 * sizing.baseLine,
+    color: colors.neutral_dark_x,
   },
   name: {
     fontSize: 2.5 * sizing.baseLine,
+    color: colors.neutral_dark_x,
   },
   email: {
     fontSize: 2 * sizing.baseLine,
+    color: colors.neutral_dark_x,
     paddingBottom: 3 * sizing.baseLine,
   },
   textButton: {
@@ -189,8 +102,5 @@ export const typo = StyleSheet.create({
   textSubButton: {
     fontSize: 1.75 * sizing.baseLine,
     color: colors.neutral_dark_x,
-  },
-  textButtonProfile: {
-    fontSize: 2.25 * sizing.baseLine,
   },
 })
