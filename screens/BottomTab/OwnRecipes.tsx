@@ -17,7 +17,9 @@ export const OwnRecipesScreen = () => {
             size={24}
             style={{ marginRight: 4 }}
           />
-          <Text style={typo.textButton}>ADD NEW RECIPE</Text>
+          <Text style={[typo.textButton, { paddingTop: 2.5 }]}>
+            ADD NEW RECIPE
+          </Text>
         </View>
       </TouchableOpacity>
     </View>

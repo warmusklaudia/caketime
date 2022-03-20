@@ -8,7 +8,7 @@ export const sizing = {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 2.5 * sizing.baseLine,
+    marginTop: 4 * sizing.baseLine,
     alignItems: 'center',
   },
   containerStart: {
@@ -19,21 +19,34 @@ export const styles = StyleSheet.create({
   },
   containerWelcome: {
     flex: 1,
-    marginTop: 5 * sizing.baseLine,
+    marginTop: 4 * sizing.baseLine,
+    marginHorizontal: sizing.baseLine,
   },
   containerStyles: {
     borderBottomWidth: 2,
     height: 6 * sizing.baseLine,
     borderColor: colors.neutral,
   },
-  categorySection: {
-    margin: 60,
+  categoryHolder: {
+    flexDirection: 'row',
+    marginVertical: 1.25 * sizing.baseLine,
   },
-  specialSection: {
-    margin: 40,
+  specialsHolder: {
+    alignItems: 'center',
+    marginVertical: 1.25 * sizing.baseLine,
   },
   imgHolder: {
-    elevation: 5,
+    ...Platform.select({
+      ios: {
+        shadowColor: colors.neutral_dark_x,
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+      },
+    }),
   },
   label: {
     margin: sizing.baseLine,
@@ -48,12 +61,7 @@ export const styles = StyleSheet.create({
     height: 5 * sizing.baseLine,
     padding: sizing.baseLine,
   },
-  picker: {
-    height: 4 * sizing.baseLine,
-    width: '50%',
-    borderColor: colors.beta,
-    borderWidth: 1,
-  },
+
   img: {
     width: 200,
     height: 200,
@@ -72,15 +80,15 @@ export const typo = StyleSheet.create({
   },
   welcome: {
     fontSize: 3 * sizing.baseLine,
-    paddingLeft: 4 * sizing.baseLine,
+    paddingLeft: 3 * sizing.baseLine,
   },
   subWelcome: {
-    paddingLeft: 4 * sizing.baseLine,
+    paddingLeft: 3 * sizing.baseLine,
     paddingBottom: 2 * sizing.baseLine,
   },
   category: {
     fontSize: 2.25 * sizing.baseLine,
-    paddingLeft: 4 * sizing.baseLine,
+    paddingLeft: 2 * sizing.baseLine,
     fontWeight: '700',
   },
   pageTitle: {
