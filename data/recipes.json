@@ -1,0 +1,150 @@
+[
+  {
+    "recipeId": "624c4908b62b70399ec63e93",
+    "name": "Apple cake",
+    "time": 90,
+    "category": {
+      "id": "624c42fafa5c324421899f19",
+      "name": "Cakes",
+      "url": ""
+    },
+    "servings": 8,
+    "steps": 5,
+    "quantityIngredients": 10,
+    "ingredients": [
+      {
+        "name": "Flour",
+        "quantity": "400g"
+      },
+      {
+        "name": "Sugar",
+        "quantity": "60g"
+      },
+      {
+        "name": "Vanilla sugar",
+        "quantity": "2 tsp"
+      },
+      {
+        "name": "Butter",
+        "quantity": "250g"
+      },
+      {
+        "name": "Baking powder",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Egg",
+        "quantity": "1"
+      },
+      {
+        "name": "Apples",
+        "quantity": "1,5kg"
+      },
+      {
+        "name": "Cinnamon",
+        "quantity": "2 tsp"
+      },
+      {
+        "name": "Lemon juice",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Almond flakes",
+        "quantity": "50g"
+      }
+    ],
+    "instructions": [
+      {
+        "name": "Step 1",
+        "manual": "Put flour, 30g sugar, vanilla sugar, butter, baking powder and egg into a bowl and knead the dough."
+      },
+      {
+        "name": "Step 2",
+        "manual": "Put 1/3 of the dough into the freezer. Put the rest of the dough on a baking tray and bake for 12 minutes in the oven at 180 degrees."
+      },
+      {
+        "name": "Step 3",
+        "manual": "Grate apples, sprinkle with lemon juice and mix. Put in a pan, pour 2 tablespoons of water. Add sugar, cinnamon and mix. Fry until evaporation. Cool it."
+      },
+      {
+        "name": "Step 4",
+        "manual": "Put the apples on the baked dough. Grate the rest of the dough and sprinkle with almond flakes. Bake 45 minutes at 175 degrees."
+      },
+      {
+        "name": "Step 5",
+        "manual": "Your apple cake is ready. Enjoy!"
+      }
+    ],
+    "img": "https://photorecipes.blob.core.windows.net/recipes/AppleCake.jpg"
+  },
+  {
+    "recipeId": "624c48ecb62b70399ec63e92",
+    "name": "Pavlova",
+    "time": 120,
+    "category": {
+      "id": "624c4314fa5c324421899f1b",
+      "name": "Meringues",
+      "url": ""
+    },
+    "servings": 6,
+    "steps": 6,
+    "quantityIngredients": 7,
+    "ingredients": [
+      {
+        "name": "Egg whites",
+        "quantity": "6"
+      },
+      {
+        "name": "Sugar",
+        "quantity": "240g"
+      },
+      {
+        "name": "Potato starch",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Lemon juice",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "Pinch of"
+      },
+      {
+        "name": "Whipping cream 36%",
+        "quantity": "200ml"
+      },
+      {
+        "name": "Raspberries",
+        "quantity": "250g"
+      }
+    ],
+    "instructions": [
+      {
+        "name": "Step 1",
+        "manual": "Whip the egg whites with a pinch of salt. After 3 minutes, start adding sugar gradually. Add lemon juice and potato starch and whip a few more minutes. "
+      },
+      {
+        "name": "Step 2",
+        "manual": "Make a circle with whipped egg whites on the baking sheet and put in the oven preheated to 150 degrees. After 7 minutes, reduce the temperature to 110 degrees and dry it for 100 minutes. After baking, leave it in the oven for next 30 minutes. "
+      },
+      {
+        "name": "Step 3",
+        "manual": "Whip the cream with 2 tablespoons sugar. "
+      },
+      {
+        "name": "Step 4",
+        "manual": "Blend raspberries."
+      },
+      {
+        "name": "Step 5",
+        "manual": "Take meringue from the oven, put the whipped cream on the top and pour over the raspberry mousse."
+      },
+      {
+        "name": "Step 6",
+        "manual": "Your Pavlova is ready. Enjoy!"
+      }
+    ],
+    "img": "https://photorecipes.blob.core.windows.net/recipes/Pavlova.JPG"
+  }
+]

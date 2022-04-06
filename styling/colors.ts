@@ -1,4 +1,5 @@
 export const colors = {
+  alpha_light_x: '#F0D6DC',
   alpha_light: '#EE93A9',
   alpha: '#B82A60',
   alpha_dark: '#6B1938',

@@ -29,7 +29,8 @@ export const styles = StyleSheet.create({
   },
   categoryHolder: {
     flexDirection: 'row',
-    marginVertical: 1.25 * sizing.baseLine,
+    marginTop: 2 * sizing.baseLine,
+    marginBottom: 4 * sizing.baseLine,
   },
   specialsHolder: {
     alignItems: 'center',
@@ -68,6 +69,20 @@ export const styles = StyleSheet.create({
     borderRadius: 100,
     borderWidth: 1,
     borderColor: colors.alpha_light,
+  },
+  specials: {
+    width: 340,
+    height: 300,
+    marginVertical: sizing.baseLine,
+    marginHorizontal: sizing.baseLine / 2,
+  },
+  imgBackgroundRecipe: {
+    borderRadius: sizing.baseLine,
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'flex-end',
+    paddingBottom: sizing.baseLine * 4,
+    overflow: 'hidden',
   },
 })
 
@@ -111,5 +126,18 @@ export const typo = StyleSheet.create({
   textSubButton: {
     fontSize: 1.75 * sizing.baseLine,
     color: colors.neutral_dark_x,
+  },
+  titleRecipe: {
+    textAlign: 'center',
+    fontSize: 4.5 * sizing.baseLine,
+    textShadowRadius: sizing.baseLine / 4,
+    textShadowColor: colors.neutral_dark_x,
+    color: colors.neutral_light_x,
+    letterSpacing: sizing.baseLine / 2,
+    ...Platform.select({
+      ios: {
+        fontFamily: 'Helvetica Neue',
+      },
+    }),
   },
 })

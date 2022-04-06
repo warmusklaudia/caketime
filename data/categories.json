@@ -1,0 +1,22 @@
+[
+  {
+    "id": "624adffe2f6c36aa0f8aa721",
+    "name": "Cakes",
+    "url": "https://photorecipes.blob.core.windows.net/photo-categories/Cake.png"
+  },
+  {
+    "id": "624ae0082f6c36aa0f8aa722",
+    "name": "Muffins",
+    "url": "https://photorecipes.blob.core.windows.net/photo-categories/Muffin.png"
+  },
+  {
+    "id": "624ae01c2f6c36aa0f8aa723",
+    "name": "Meringues",
+    "url": "https://photorecipes.blob.core.windows.net/photo-categories/Meringue.png"
+  },
+  {
+    "id": "624ae01f2f6c36aa0f8aa724",
+    "name": "Others",
+    "url": "https://photorecipes.blob.core.windows.net/photo-categories/Others.png"
+  }
+]
