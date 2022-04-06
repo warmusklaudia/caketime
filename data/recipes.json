@@ -10,6 +10,7 @@
     },
     "servings": 8,
     "steps": 5,
+    "difficulty": "Easy",
     "quantityIngredients": 10,
     "ingredients": [
       {
@@ -88,6 +89,7 @@
     },
     "servings": 6,
     "steps": 6,
+    "difficulty": "Medium",
     "quantityIngredients": 7,
     "ingredients": [
       {

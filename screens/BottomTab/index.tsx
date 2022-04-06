@@ -7,6 +7,7 @@ import { SearchScreen } from './Search'
 import { FavoritesScreen } from './Favorite'
 import { OwnRecipesScreen } from './OwnRecipes'
 import { MyAccountScreen } from './MyAccount'
+import { MyStackInTab } from './Stack'
 
 const Tab = createMaterialBottomTabNavigator()
 
@@ -20,7 +21,7 @@ export const MyTabs = () => {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={MyStackInTab}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" size={26} color={color} />

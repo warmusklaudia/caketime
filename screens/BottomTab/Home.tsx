@@ -1,17 +1,20 @@
 import { MaterialBottomTabNavigationProp } from '@react-navigation/material-bottom-tabs'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import {
+  createStackNavigator,
+  StackNavigationProp,
+} from '@react-navigation/stack'
 import { BlurView } from 'expo-blur'
 import { useState } from 'react'
 import { ImageBackground, Text, TouchableOpacity, View } from 'react-native'
+import { Item } from 'react-native-paper/lib/typescript/components/List/List'
 import TopCategories from '../../components/TopCategories'
 import Recipe from '../../interfaces/Recipe'
 import { styles, typo } from '../../styling/caketime'
 import { getRandomRecipe } from '../../utils/GetRandomRecipe'
 
 export const HomeScreen = () => {
-  const { navigate } =
-    useNavigation<MaterialBottomTabNavigationProp<ParamListBase>>()
+  const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   const [r, setR] = useState<Recipe>(getRandomRecipe)
 
   const pickNewRecipe = () => {
@@ -30,7 +33,9 @@ export const HomeScreen = () => {
       </View>
       <Text style={typo.category}>Special for you</Text>
       <View style={styles.specialsHolder}>
-        <TouchableOpacity onPress={() => navigate('Stack')}>
+        <TouchableOpacity
+          onPress={() => navigate('DetailsSpecialRecipe', { payload: r })}
+        >
           <View style={styles.specials}>
             <ImageBackground
               style={styles.imgBackgroundRecipe}

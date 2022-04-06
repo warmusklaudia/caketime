@@ -9,6 +9,7 @@ export default interface Recipe {
   category: Category
   servings: number
   steps: number
+  difficulty: string
   quantityIngredients: number
   ingredients: Ingredient[]
   instructions: Instruction[]
