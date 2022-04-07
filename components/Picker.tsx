@@ -1,9 +1,10 @@
 import { Picker } from '@react-native-picker/picker'
 import { useState } from 'react'
 import { Platform, StyleSheet } from 'react-native'
+import categories from '../data/categories.json'
 
 export default () => {
-  const [selectedCategory, setSelectedCategory] = useState('Cupcakes')
+  const [selectedCategory, setSelectedCategory] = useState('')
   return (
     <Picker
       style={styles.picker}
@@ -11,9 +12,9 @@ export default () => {
       onValueChange={(itemValue, itemIndex) => setSelectedCategory(itemValue)}
     >
       <Picker.Item enabled={false} label="Select category" />
-      <Picker.Item label="Cream cakes" value="Cream cakes" />
+      <Picker.Item label="Cakes" value="Cakes" />
+      <Picker.Item label="Muffins" value="Muffins" />
       <Picker.Item label="Meringues" value="Meringues" />
-      <Picker.Item label="Yeast pastries" value="Yeast pastries" />
       <Picker.Item label="Others" value="Others" />
     </Picker>
   )
