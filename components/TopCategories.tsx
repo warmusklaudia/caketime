@@ -14,10 +14,17 @@ import { sizing } from '../styling/caketime'
 import { colors } from '../styling/colors'
 import Category from '../interfaces/Category'
 import categories from '../data/categories.json'
+import { ParamListBase, useNavigation } from '@react-navigation/native'
+import { MaterialBottomTabNavigationProp } from '@react-navigation/material-bottom-tabs'
 export default () => {
+  const { navigate } =
+    useNavigation<MaterialBottomTabNavigationProp<ParamListBase>>()
   const renderItem = ({ item }: { item: Category }) => {
     return (
-      <TouchableOpacity style={styles.catHolder}>
+      <TouchableOpacity
+        style={styles.catHolder}
+        onPress={() => navigate('Search')}
+      >
         <Text style={styles.title}>{item.name}</Text>
         <ImageBackground
           style={styles.image}

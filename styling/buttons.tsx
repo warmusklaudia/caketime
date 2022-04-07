@@ -29,7 +29,7 @@ export default StyleSheet.create({
   subButton: {
     marginBottom: sizing.baseLine * 2,
   },
-  buttonAdd: {
+  button: {
     marginTop: 2 * sizing.baseLine,
     borderWidth: 1,
     borderColor: colors.beta_dark,

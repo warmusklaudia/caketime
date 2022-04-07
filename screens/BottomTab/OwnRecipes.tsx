@@ -9,7 +9,7 @@ export const OwnRecipesScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={typo.pageTitle}>My own recipes</Text>
-      <TouchableOpacity style={buttons.buttonAdd}>
+      <TouchableOpacity style={buttons.button}>
         <View style={{ flexDirection: 'row' }}>
           <MaterialCommunityIcons
             name="plus"

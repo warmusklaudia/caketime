@@ -1,28 +1,31 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import buttons from '../../../styling/buttons'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { sizing, styles } from '../../../styling/caketime'
+import { sizing, typo } from '../../../styling/caketime'
 import { colors } from '../../../styling/colors'
-import { useState } from 'react'
+import { ParamListBase, useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 export default ({ route }: { route: any }) => {
   const { payload } = route.params
-  const [ingredients, setIngredients] = useState<any | undefined>()
+  const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
 
   const showIngredients = (): JSX.Element[] => {
-    const details: JSX.Element[] = []
+    const ingredients: JSX.Element[] = []
     for (let i = 0; i < payload.ingredients.length; i++) {
-      details.push(
-        <Text>
+      ingredients.push(
+        <Text style={{ textTransform: 'lowercase' }}>
           - {payload.ingredients[i].quantity} {payload.ingredients[i].name}
         </Text>,
       )
     }
-    return details
+    return ingredients
   }
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[stylesDetails.container, { justifyContent: 'space-between' }]}
+    >
       <View style={stylesDetails.imgHolder}>
         <Image style={stylesDetails.img} source={{ uri: payload.img }} />
         <TouchableOpacity style={buttons.buttonAddPhoto}>
@@ -41,32 +44,65 @@ export default ({ route }: { route: any }) => {
           <Text>{payload.difficulty}</Text>
         </View>
       </View>
-      <View style={stylesDetails.ingredientsHolder}>
-        <Text style={stylesDetails.ingTitle}>Ingredients: </Text>
-        {showIngredients()}
+      <View style={stylesDetails.containerIngredients}>
+        <View style={stylesDetails.ingredientsHolder}>
+          <Text style={stylesDetails.detailTitle}>Ingredients: </Text>
+          {showIngredients()}
+        </View>
+        <View style={stylesDetails.imgHolder}>
+          <Text style={stylesDetails.detailTitle}>Category: </Text>
+          <Image
+            style={stylesDetails.imgCat}
+            source={{ uri: payload.category.url }}
+          />
+        </View>
+      </View>
+      <View style={{ marginBottom: 30 }}>
+        <TouchableOpacity
+          style={[buttons.button, { alignSelf: 'center' }]}
+          onPress={() => navigate('Steps', { payload: payload })}
+        >
+          <Text style={[typo.textButton]}>START BAKING</Text>
+        </TouchableOpacity>
       </View>
     </View>
   )
 }
 
 const stylesDetails = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 4 * sizing.baseLine,
+  },
+  containerIngredients: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: sizing.baseLine * 2.5,
+    marginTop: sizing.baseLine * 1.5,
+  },
   img: {
+    borderRadius: sizing.baseLine,
     width: 350,
-    height: 260,
+    height: 250,
+  },
+  imgCat: {
+    width: 100,
+    height: 100,
   },
   imgHolder: {
     alignItems: 'center',
   },
   infoHolder: {
+    alignSelf: 'center',
     flexDirection: 'row',
   },
   detailsHolder: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 80,
-    height: 80,
+    width: 78,
+    height: 70,
     borderWidth: 1,
-    borderColor: colors.neutral_light,
+    borderColor: colors.alpha_light,
     marginHorizontal: sizing.baseLine,
     marginVertical: sizing.baseLine * 1.5,
   },
@@ -76,10 +112,14 @@ const stylesDetails = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   name: {
-    fontSize: sizing.baseLine * 3,
+    fontSize: sizing.baseLine * 4,
+    textAlign: 'center',
+    letterSpacing: 2.5,
+    fontFamily: 'DancingScript_500Medium',
   },
-  ingTitle: {
+  detailTitle: {
     fontSize: sizing.baseLine * 2,
     marginBottom: sizing.baseLine / 1.5,
+    letterSpacing: 0.75,
   },
 })

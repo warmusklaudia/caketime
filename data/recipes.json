@@ -6,7 +6,7 @@
     "category": {
       "id": "624c42fafa5c324421899f19",
       "name": "Cakes",
-      "url": ""
+      "url": "https://photorecipes.blob.core.windows.net/photo-categories/Cake.png"
     },
     "servings": 8,
     "steps": 5,
@@ -85,7 +85,7 @@
     "category": {
       "id": "624c4314fa5c324421899f1b",
       "name": "Meringues",
-      "url": ""
+      "url": "https://photorecipes.blob.core.windows.net/photo-categories/Meringue.png"
     },
     "servings": 6,
     "steps": 6,
