@@ -34,7 +34,7 @@ export const HomeScreen = () => {
       <Text style={typo.category}>Special for you</Text>
       <View style={styles.specialsHolder}>
         <TouchableOpacity
-          onPress={() => navigate('DetailsSpecialRecipe', { payload: r })}
+          onPress={() => navigate('DetailsRecipe', { payload: r })}
         >
           <View style={styles.specials}>
             <ImageBackground

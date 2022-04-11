@@ -15,13 +15,13 @@ export default ({ route }: { route: any }) => {
   const onPressPrevious = () => {
     setCount((prevCount) => prevCount - 1)
     if (count <= 0) {
-      navigate('DetailsSpecialRecipe', { payload: payload })
+      navigate('DetailsRecipe', { payload: payload })
     }
   }
   const onPressNext = () => {
     setCount((prevCount) => prevCount + 1)
     if (count >= totalSteps - 1) {
-      navigate('DetailsSpecialRecipe', { payload: payload })
+      navigate('DetailsRecipe', { payload: payload })
     }
   }
 
@@ -40,7 +40,7 @@ export default ({ route }: { route: any }) => {
       <View
         style={{
           flexDirection: 'row',
-          marginBottom: 30,
+          marginBottom: 15,
         }}
       >
         <TouchableOpacity

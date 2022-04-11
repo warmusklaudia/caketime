@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import buttons from '../../../styling/buttons'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { sizing, typo } from '../../../styling/caketime'
@@ -44,20 +51,23 @@ export default ({ route }: { route: any }) => {
           <Text>{payload.difficulty}</Text>
         </View>
       </View>
-      <View style={stylesDetails.containerIngredients}>
-        <View style={stylesDetails.ingredientsHolder}>
-          <Text style={stylesDetails.detailTitle}>Ingredients: </Text>
-          {showIngredients()}
+      <ScrollView>
+        <View style={stylesDetails.containerIngredients}>
+          <View style={stylesDetails.ingredientsHolder}>
+            <Text style={stylesDetails.detailTitle}>Ingredients: </Text>
+            {showIngredients()}
+          </View>
+          <View style={stylesDetails.imgHolder}>
+            <Text style={stylesDetails.detailTitle}>Category: </Text>
+            <Image
+              style={stylesDetails.imgCat}
+              source={{ uri: payload.category.url }}
+            />
+          </View>
         </View>
-        <View style={stylesDetails.imgHolder}>
-          <Text style={stylesDetails.detailTitle}>Category: </Text>
-          <Image
-            style={stylesDetails.imgCat}
-            source={{ uri: payload.category.url }}
-          />
-        </View>
-      </View>
-      <View style={{ marginBottom: 30 }}>
+      </ScrollView>
+
+      <View style={{ marginBottom: 15 }}>
         <TouchableOpacity
           style={[buttons.button, { alignSelf: 'center' }]}
           onPress={() => navigate('Steps', { payload: payload })}

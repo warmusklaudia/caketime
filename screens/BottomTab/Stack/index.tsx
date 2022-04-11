@@ -3,7 +3,8 @@ import {
   StackNavigationOptions,
 } from '@react-navigation/stack'
 import { HomeScreen } from '../Home'
-import DetailsSpecialRecipe from './DetailsSpecialRecipe'
+import { SearchScreen } from '../Search'
+import DetailsRecipe from './DetailsRecipe'
 import Steps from './Steps'
 const Stack = createStackNavigator()
 const screenOptions: StackNavigationOptions = {
@@ -14,10 +15,7 @@ export const MyStackInTab = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen
-        name="DetailsSpecialRecipe"
-        component={DetailsSpecialRecipe}
-      />
+      <Stack.Screen name="DetailsRecipe" component={DetailsRecipe} />
       <Stack.Screen name="Steps" component={Steps} />
     </Stack.Navigator>
   )

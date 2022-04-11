@@ -3,11 +3,11 @@ import { Text, View } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { colors } from '../../styling/colors'
 import { HomeScreen } from './Home'
-import { SearchScreen } from './Search'
 import { FavoritesScreen } from './Favorite'
 import { OwnRecipesScreen } from './OwnRecipes'
 import { MyAccountScreen } from './MyAccount'
 import { MyStackInTab } from './Stack'
+import { SearchScreen } from './Search'
 
 const Tab = createMaterialBottomTabNavigator()
 

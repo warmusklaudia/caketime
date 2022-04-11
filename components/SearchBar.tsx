@@ -2,11 +2,14 @@ import { StyleSheet, TextInput, View } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { colors } from '../styling/colors'
 import { sizing } from '../styling/caketime'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default () => {
   const [search, setSearch] = useState('')
-  const onChangeSearch = () => setSearch('x')
+  const [fullData, setFullData] = useState([])
+  useEffect(() => {
+    setData[]
+  })
   return (
     <View style={styles.inputSearchSection}>
       <MaterialCommunityIcons
@@ -17,9 +20,10 @@ export default () => {
       />
       <TextInput
         style={{ flex: 1 }}
-        onChangeText={(str) => setSearch(str)}
+        onChangeText={str => handleSearch(txt)}
         value={search}
         placeholder="Search"
+        clearButtonMode="always"
       />
     </View>
   )
@@ -29,12 +33,13 @@ export const styles = StyleSheet.create({
   inputSearchSection: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignSelf: 'center',
     borderWidth: 1,
-    borderColor: colors.neutral,
+    borderColor: colors.alpha_light,
     borderRadius: sizing.baseLine / 2,
-    width: '80%',
+    width: '90%',
     height: 5 * sizing.baseLine,
     padding: sizing.baseLine,
+    marginBottom: sizing.baseLine * 2,
   },
 })
