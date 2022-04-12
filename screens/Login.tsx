@@ -1,17 +1,53 @@
+import { errorPrefix } from '@firebase/util'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { FirebaseError } from 'firebase/app'
+import { signInWithEmailAndPassword, UserCredential } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import buttons from '../styling/buttons'
 import { styles, typo } from '../styling/caketime'
 import { colors } from '../styling/colors'
+import { useAuth } from '../utils/AuthContext'
+import { app, auth } from '../utils/firebase'
 
 export const Login = () => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
-  const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('')
+  // const [email, setEmail] = useState('')
+  // const [pass, setPass] = useState('')
   const [show, setShow] = useState(false)
+  const [error, setError] = useState('')
+  const [userCredentials, setUserCredentials] = useState({
+    email: '',
+    password: '',
+  })
+
+  const { setUser } = useAuth()
+  const SignIn = () => {
+    console.log('sign in...')
+    console.log(userCredentials.email, userCredentials.password)
+    // setUserCredentials((u) => {
+    //   u.email = email
+    //   u.password = pass
+    //   return { ...u }
+    // })
+    console.log(userCredentials)
+    signInWithEmailAndPassword(
+      auth,
+      userCredentials.email,
+      userCredentials.password,
+    )
+      .then((u: UserCredential) => {
+        console.log('signed in!!', userCredentials.email)
+        console.log(u)
+        setUser(u)
+        navigate('Welcome')
+      })
+      .catch((err) => {
+        setError(err.toString())
+      })
+  }
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -20,13 +56,28 @@ export const Login = () => {
     return () => clearTimeout(timeout)
   }, [show])
 
+  const showError = () => {
+    if (error === 'FirebaseError: Firebase: Error (auth/invalid-email).') {
+      return <Text style={{ color: 'red' }}>Invalid email</Text>
+    }
+    if (error === 'FirebaseError: Firebase: Error (auth/wrong-password).') {
+      return <Text style={{ color: 'red' }}>Wrong password</Text>
+    }
+  }
+
   return (
     <View style={styles.containerStart}>
+      {showError()}
       <View style={styles.label}>
         <FloatingLabelInput
           label={'Email'}
-          value={email}
-          onChangeText={(email) => setEmail(email)}
+          value={userCredentials.email}
+          onChangeText={(email) =>
+            setUserCredentials((u) => {
+              u.email = email
+              return { ...u }
+            })
+          }
           containerStyles={styles.containerStyles}
           customLabelStyles={{
             colorBlurred: colors.neutral,
@@ -39,8 +90,13 @@ export const Login = () => {
         <FloatingLabelInput
           label={'Password'}
           isPassword
-          value={pass}
-          onChangeText={(pass) => setPass(pass)}
+          value={userCredentials.password}
+          onChangeText={(pass) =>
+            setUserCredentials((u) => {
+              u.password = pass
+              return { ...u }
+            })
+          }
           containerStyles={styles.containerStyles}
           customLabelStyles={{
             colorBlurred: colors.neutral,
@@ -48,7 +104,7 @@ export const Login = () => {
           }}
         />
       </View>
-      <TouchableOpacity style={buttons.buttonLogin}>
+      <TouchableOpacity style={buttons.buttonLogin} onPress={SignIn}>
         <Text style={typo.textButton}>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity

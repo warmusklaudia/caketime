@@ -32,7 +32,7 @@ export const MyAccountScreen = () => {
       <ProfileButtons
         route="My recipes"
         icon={() => 'chef-hat'}
-        title="My own recipes"
+        title="My recipes"
       />
       <ProfileButtons route="" icon={() => 'plus'} title="Add recipe" />
       <ProfileButtons route="Login" icon={() => 'logout'} title="Log out" />

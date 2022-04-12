@@ -8,7 +8,7 @@ import buttons from '../../styling/buttons'
 export const OwnRecipesScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={typo.pageTitle}>My own recipes</Text>
+      <Text style={typo.pageTitle}>My recipes</Text>
       <TouchableOpacity style={buttons.button}>
         <View style={{ flexDirection: 'row' }}>
           <MaterialCommunityIcons
