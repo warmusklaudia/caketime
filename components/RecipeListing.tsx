@@ -31,7 +31,7 @@ export default () => {
     return (
       <TouchableOpacity
         style={stylesRecipe.container}
-        onPress={() => navigate('DetailsRecipe', { payload: item })}
+        onPress={() => navigate('DetailsSearch', { payload: item })}
       >
         <View style={stylesRecipe.recipeHolder}>
           <Image style={stylesRecipe.img} source={{ uri: item.img }} />

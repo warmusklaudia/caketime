@@ -1,3 +1,5 @@
+import { ParamListBase, useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 import {
   Image,
   ScrollView,
@@ -6,14 +8,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import buttons from '../../../styling/buttons'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { sizing, typo } from '../../../styling/caketime'
-import { colors } from '../../../styling/colors'
-import { ParamListBase, useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import buttons from '../styling/buttons'
+import { sizing, typo } from '../styling/caketime'
+import { colors } from '../styling/colors'
 
-export default ({ route }: { route: any }) => {
+export default ({ route, screen }: { route: any; screen: string }) => {
   const { payload } = route.params
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
 
@@ -70,7 +70,7 @@ export default ({ route }: { route: any }) => {
       <View style={{ marginBottom: 15 }}>
         <TouchableOpacity
           style={[buttons.button, { alignSelf: 'center' }]}
-          onPress={() => navigate('Steps', { payload: payload })}
+          onPress={() => navigate(screen, { payload: payload })}
         >
           <Text style={[typo.textButton]}>START BAKING</Text>
         </TouchableOpacity>

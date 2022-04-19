@@ -1,13 +1,11 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
-import { Text, View } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { colors } from '../../styling/colors'
-import { HomeScreen } from './Home'
-import { FavoritesScreen } from './Favorite'
-import { OwnRecipesScreen } from './OwnRecipes'
 import { MyAccountScreen } from './MyAccount'
-import { MyStackInTab } from './Stack'
-import { SearchScreen } from './Search'
+import { HomeTab } from './HomeStack'
+import { SearchTab } from './SearchStack'
+import { OwnRecipesTab } from './MyRecipeStack.tsx'
+import { FavTab } from './FavStack'
 
 const Tab = createMaterialBottomTabNavigator()
 
@@ -21,7 +19,7 @@ export const MyTabs = () => {
     >
       <Tab.Screen
         name="Home"
-        component={MyStackInTab}
+        component={HomeTab}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" size={26} color={color} />
@@ -30,7 +28,7 @@ export const MyTabs = () => {
       />
       <Tab.Screen
         name="Search"
-        component={SearchScreen}
+        component={SearchTab}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="magnify" size={26} color={color} />
@@ -39,7 +37,7 @@ export const MyTabs = () => {
       />
       <Tab.Screen
         name="Favorites"
-        component={FavoritesScreen}
+        component={FavTab}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="heart" size={26} color={color} />
@@ -48,7 +46,7 @@ export const MyTabs = () => {
       />
       <Tab.Screen
         name="My recipes"
-        component={OwnRecipesScreen}
+        component={OwnRecipesTab}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="chef-hat" size={26} color={color} />

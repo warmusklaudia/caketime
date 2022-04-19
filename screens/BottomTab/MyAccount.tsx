@@ -34,7 +34,11 @@ export const MyAccountScreen = () => {
         icon={() => 'chef-hat'}
         title="My recipes"
       />
-      <ProfileButtons route="" icon={() => 'plus'} title="Add recipe" />
+      <ProfileButtons
+        route="AddRecipe"
+        icon={() => 'plus'}
+        title="Add recipe"
+      />
       <ProfileButtons route="Login" icon={() => 'logout'} title="Log out" />
     </View>
   )

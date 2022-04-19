@@ -4,12 +4,18 @@ import { sizing, styles, typo } from '../../styling/caketime'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { colors } from '../../styling/colors'
 import buttons from '../../styling/buttons'
+import { ParamListBase, useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 export const OwnRecipesScreen = () => {
+  const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   return (
     <View style={styles.container}>
       <Text style={typo.pageTitle}>My recipes</Text>
-      <TouchableOpacity style={buttons.button}>
+      <TouchableOpacity
+        style={buttons.button}
+        onPress={() => navigate('AddRecipe')}
+      >
         <View style={{ flexDirection: 'row' }}>
           <MaterialCommunityIcons
             name="plus"

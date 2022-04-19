@@ -1,14 +1,10 @@
 import {
   FlatList,
-  Image,
   ImageBackground,
-  InteractionManager,
   Platform,
-  Pressable,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
 } from 'react-native'
 import { sizing } from '../styling/caketime'
 import { colors } from '../styling/colors'
@@ -16,10 +12,26 @@ import Category from '../interfaces/Category'
 import categories from '../data/categories.json'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { MaterialBottomTabNavigationProp } from '@react-navigation/material-bottom-tabs'
+import { useEffect, useState } from 'react'
 export default () => {
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  // const fetchData = async () => {
+  //   const resp = await fetch('http://192.168.0.194:3000/categories')
+  //   const data = await resp.json()
+  //   setData(data)
+  //   setIsLoading(false)
+  // }
+
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
+
   const { navigate } =
     useNavigation<MaterialBottomTabNavigationProp<ParamListBase>>()
   const renderItem = ({ item }: { item: Category }) => {
+    console.log(data)
     return (
       <TouchableOpacity
         style={styles.catHolder}

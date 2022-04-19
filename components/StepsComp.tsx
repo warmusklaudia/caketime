@@ -2,11 +2,11 @@ import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import buttons from '../../../styling/buttons'
-import { sizing, styles, typo } from '../../../styling/caketime'
-import { colors } from '../../../styling/colors'
+import buttons from '../styling/buttons'
+import { sizing, styles, typo } from '../styling/caketime'
+import { colors } from '../styling/colors'
 
-export default ({ route }: { route: any }) => {
+export default ({ route, screen }: { route: any; screen: string }) => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   const [count, setCount] = useState(0)
   const { payload } = route.params
@@ -15,13 +15,13 @@ export default ({ route }: { route: any }) => {
   const onPressPrevious = () => {
     setCount((prevCount) => prevCount - 1)
     if (count <= 0) {
-      navigate('DetailsRecipe', { payload: payload })
+      navigate(screen, { payload: payload })
     }
   }
   const onPressNext = () => {
     setCount((prevCount) => prevCount + 1)
     if (count >= totalSteps - 1) {
-      navigate('DetailsRecipe', { payload: payload })
+      navigate(screen, { payload: payload })
     }
   }
 

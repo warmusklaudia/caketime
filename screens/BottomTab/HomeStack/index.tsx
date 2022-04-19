@@ -3,20 +3,19 @@ import {
   StackNavigationOptions,
 } from '@react-navigation/stack'
 import { HomeScreen } from '../Home'
-import { SearchScreen } from '../Search'
-import DetailsRecipe from './DetailsRecipe'
-import Steps from './Steps'
+import DetailsHome from './DetailsHome'
+import StepsHome from './StepsHome'
 const Stack = createStackNavigator()
 const screenOptions: StackNavigationOptions = {
   headerShown: false,
 }
 
-export const MyStackInTab = () => {
+export const HomeTab = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="DetailsRecipe" component={DetailsRecipe} />
-      <Stack.Screen name="Steps" component={Steps} />
+      <Stack.Screen name="DetailsHome" component={DetailsHome} />
+      <Stack.Screen name="StepsHome" component={StepsHome} />
     </Stack.Navigator>
   )
 }
