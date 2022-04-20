@@ -11,11 +11,14 @@ import { Item } from 'react-native-paper/lib/typescript/components/List/List'
 import TopCategories from '../../components/TopCategories'
 import Recipe from '../../interfaces/Recipe'
 import { styles, typo } from '../../styling/caketime'
+import { useAuth } from '../../utils/AuthContext'
 import { getRandomRecipe } from '../../utils/GetRandomRecipe'
 
 export const HomeScreen = () => {
+  const { user } = useAuth()
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   const [r, setR] = useState<Recipe>(getRandomRecipe)
+  console.log(user?.email)
 
   const pickNewRecipe = () => {
     const newRecipe: Recipe = getRandomRecipe(r)

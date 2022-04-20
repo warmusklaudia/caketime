@@ -1,7 +1,5 @@
-import { errorPrefix } from '@firebase/util'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { FirebaseError } from 'firebase/app'
 import { signInWithEmailAndPassword, UserCredential } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
@@ -10,7 +8,7 @@ import buttons from '../styling/buttons'
 import { styles, typo } from '../styling/caketime'
 import { colors } from '../styling/colors'
 import { useAuth } from '../utils/AuthContext'
-import { app, auth } from '../utils/firebase'
+import { auth } from '../utils/firebase'
 
 export const Login = () => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
@@ -40,8 +38,8 @@ export const Login = () => {
     )
       .then((u: UserCredential) => {
         console.log('signed in!!', userCredentials.email)
-        console.log(u)
-        setUser(u)
+        console.log(u.user)
+        setUser(u.user)
         navigate('Welcome')
       })
       .catch((err) => {

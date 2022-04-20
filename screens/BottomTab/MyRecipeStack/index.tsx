@@ -4,12 +4,12 @@ import {
 } from '@react-navigation/stack'
 import { OwnRecipesScreen } from '../OwnRecipes'
 import AddRecipe from './AddRecipe'
-const Stack = createStackNavigator()
-const screenOptions: StackNavigationOptions = {
-  headerShown: false,
-}
 
 export const OwnRecipesTab = () => {
+  const Stack = createStackNavigator()
+  const screenOptions: StackNavigationOptions = {
+    headerShown: false,
+  }
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name="OwnRecipes" component={OwnRecipesScreen} />

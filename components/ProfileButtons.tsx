@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
   buttonProfile: {
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: colors.beta_light,
+    borderColor: colors.alpha_light,
     width: '100%',
     height: 7 * sizing.baseLine,
     justifyContent: 'center',

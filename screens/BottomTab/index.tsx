@@ -4,8 +4,8 @@ import { colors } from '../../styling/colors'
 import { MyAccountScreen } from './MyAccount'
 import { HomeTab } from './HomeStack'
 import { SearchTab } from './SearchStack'
-import { OwnRecipesTab } from './MyRecipeStack.tsx'
 import { FavTab } from './FavStack'
+import { OwnRecipesTab } from './MyRecipeStack'
 
 const Tab = createMaterialBottomTabNavigator()
 
