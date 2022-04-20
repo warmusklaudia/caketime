@@ -1,6 +1,6 @@
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   FlatList,
   Image,
@@ -16,12 +16,18 @@ import { sizing } from '../styling/caketime'
 import { colors } from '../styling/colors'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-export default () => {
+export default ({ cat }: { cat?: string | undefined }) => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
-  const [text, setText] = useState('')
+  const [text, setText] = useState<string | undefined>(cat)
+
+  useEffect(() => {
+    setText(cat)
+  }, [cat])
+
   const filterdData = text
     ? recipes.filter((item) => {
-        const itemData = item.name.toUpperCase()
+        const itemData =
+          item.name.toUpperCase() + item.category.name.toUpperCase()
         const textData = text.toUpperCase()
         return itemData.indexOf(textData) > -1
       })
@@ -51,7 +57,9 @@ export default () => {
         />
         <TextInput
           style={{ flex: 1 }}
-          onChangeText={(text) => setText(text)}
+          onChangeText={(str) => {
+            setText(str)
+          }}
           value={text}
           placeholder="Search"
           clearButtonMode="always"

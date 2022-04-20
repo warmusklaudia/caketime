@@ -14,7 +14,11 @@ const screenOptions: StackNavigationOptions = {
 export const SearchTab = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="SearchScreen" component={SearchScreen} />
+      <Stack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        initialParams={{ name: '' }}
+      />
       <Stack.Screen name="DetailsSearch" component={DetailsSearch} />
       <Stack.Screen name="StepsSearch" component={StepsSearch} />
     </Stack.Navigator>
