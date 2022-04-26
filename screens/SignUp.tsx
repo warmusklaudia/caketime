@@ -1,7 +1,16 @@
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { createUserWithEmailAndPassword, UserCredential } from 'firebase/auth'
-import { useState } from 'react'
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInAnonymously,
+  signInWithEmailAndPassword,
+  updateCurrentUser,
+  updateProfile,
+  User,
+  UserCredential,
+} from 'firebase/auth'
+import { useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import buttons from '../styling/buttons'
@@ -11,29 +20,36 @@ import { useAuth } from '../utils/AuthContext'
 import { auth } from '../utils/firebase'
 
 export const SignUp = () => {
-  // const [email, setEmail] = useState('')
-  // const [name, setName] = useState('')
-  // const [pass, setPass] = useState('')
+  const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
 
   const [newUser, setNewUser] = useState({
-    name: '',
-    email: '',
-    password: '',
+    email: 'test@test.com',
+    password: 'test123',
   })
-  const { setUser } = useAuth()
+
+  const [name, setName] = useState<string>()
+
+  const { user, setUser } = useAuth()
 
   const registerUser = (): void => {
     if (newUser.email && newUser.password) {
       createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
-        .then((user: UserCredential) => {
-          setUser(user.user)
-          console.log('OK')
-          setNewUser((u) => {
-            u.name = ''
-            u.email = ''
-            u.password = ''
-            return { ...u }
+        .then((u: UserCredential) => {
+          setUser(async () => {
+            if (u.user) await updateProfile(u.user, { displayName: name })
+            console.log('name is', name)
+            console.log('display name is ', u.user?.displayName)
+            console.log(u.user)
+            return u.user
           })
+          // setNewUser((u) => {
+          //   u.email = ''
+          //   u.password = ''
+          //   return { ...u }
+          // })
+          // updateProfile(user.user, { displayName: name })
+          // console.log('name is', name)
+          // console.log('display name is ', user.user.displayName)
         })
         .catch((err) => {
           console.error(err)
@@ -64,13 +80,10 @@ export const SignUp = () => {
       <View style={styles.label}>
         <FloatingLabelInput
           label={'Name'}
-          value={newUser.name}
-          onChangeText={(name) =>
-            setNewUser((u) => {
-              u.name = name
-              return { ...u }
-            })
-          }
+          value={name}
+          onChangeText={(name) => {
+            setName(name)
+          }}
           containerStyles={styles.containerStyles}
           customLabelStyles={{
             colorBlurred: colors.neutral,

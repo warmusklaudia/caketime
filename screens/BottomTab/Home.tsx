@@ -18,7 +18,7 @@ export const HomeScreen = () => {
   const { user } = useAuth()
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   const [r, setR] = useState<Recipe>(getRandomRecipe)
-  console.log(user?.email)
+  console.log(user?.displayName)
 
   const pickNewRecipe = () => {
     const newRecipe: Recipe = getRandomRecipe(r)
@@ -27,7 +27,7 @@ export const HomeScreen = () => {
   return (
     <View style={styles.containerWelcome}>
       <View style={{ marginBottom: 16 }}>
-        <Text style={typo.welcome}>Hello, Klaudia!</Text>
+        <Text style={typo.welcome}>Hello, {user?.displayName}</Text>
         <Text style={typo.subWelcome}>What would you like to bake today?</Text>
       </View>
       <Text style={typo.category}>Top categories</Text>
