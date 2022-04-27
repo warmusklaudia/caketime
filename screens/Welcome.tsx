@@ -7,7 +7,6 @@ import { MyTabs } from './BottomTab'
 
 export const Welcome = () => {
   const { user, setUser } = useAuth()
-  console.log(user)
   return (
     <View style={styles.containerWelcome}>
       <MyTabs />

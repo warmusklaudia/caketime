@@ -18,12 +18,7 @@ export const HomeScreen = () => {
   const { user } = useAuth()
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   const [r, setR] = useState<Recipe>(getRandomRecipe)
-  console.log(user?.displayName)
 
-  const pickNewRecipe = () => {
-    const newRecipe: Recipe = getRandomRecipe(r)
-    setR(newRecipe)
-  }
   return (
     <View style={styles.containerWelcome}>
       <View style={{ marginBottom: 16 }}>

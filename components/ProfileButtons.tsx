@@ -4,6 +4,9 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { sizing } from '../styling/caketime'
 import { colors } from '../styling/colors'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { signOut } from 'firebase/auth'
+import { auth } from '../utils/firebase'
+import { useAuth } from '../utils/AuthContext'
 
 export default ({
   route,
@@ -14,12 +17,26 @@ export default ({
   icon: Function
   title: string
 }) => {
+  const { user, setUser } = useAuth()
   const { navigate } =
     useNavigation<MaterialBottomTabNavigationProp<ParamListBase>>()
   return (
     <TouchableOpacity
       style={styles.buttonProfile}
-      onPress={() => navigate(route)}
+      onPress={() => {
+        if (route == 'Login') {
+          signOut(auth)
+            .then(() => {
+              setUser(null)
+              navigate(route)
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+        } else {
+          navigate(route)
+        }
+      }}
     >
       <View style={{ flexDirection: 'row' }}>
         <MaterialCommunityIcons

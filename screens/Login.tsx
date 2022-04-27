@@ -25,11 +25,6 @@ export const Login = () => {
   const SignIn = () => {
     console.log('sign in...')
     console.log(userCredentials.email, userCredentials.password)
-    // setUserCredentials((u) => {
-    //   u.email = email
-    //   u.password = pass
-    //   return { ...u }
-    // })
     console.log(userCredentials)
     signInWithEmailAndPassword(
       auth,
@@ -38,8 +33,11 @@ export const Login = () => {
     )
       .then((u: UserCredential) => {
         console.log('signed in!!', userCredentials.email)
-        console.log(u.user)
         setUser(u.user)
+        setUserCredentials({
+          email: '',
+          password: '',
+        })
         navigate('Welcome')
       })
       .catch((err) => {

@@ -3,15 +3,15 @@ import Ingredient from './Ingredient'
 import Instruction from './Instruction'
 
 export default interface Recipe {
-  recipeId: string
+  recipeId?: string
   name: string
   time: number
   category: Category
   servings: number
-  steps: number
+  steps?: number
   difficulty: string
-  quantityIngredients: number
+  quantityIngredients?: number
   ingredients: Ingredient[]
   instructions: Instruction[]
-  img: string
+  img?: string
 }

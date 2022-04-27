@@ -1,5 +1,5 @@
 export default interface Category {
-  id: string
+  id?: string
   name: string
-  url: string
+  url?: string
 }

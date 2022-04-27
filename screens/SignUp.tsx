@@ -11,7 +11,7 @@ import {
   UserCredential,
 } from 'firebase/auth'
 import { useEffect, useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Text, TouchableOpacity, View } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import buttons from '../styling/buttons'
 import { styles, typo } from '../styling/caketime'
@@ -23,8 +23,8 @@ export const SignUp = () => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
 
   const [newUser, setNewUser] = useState({
-    email: 'test@test.com',
-    password: 'test123',
+    email: '',
+    password: '',
   })
 
   const [name, setName] = useState<string>()
@@ -42,14 +42,24 @@ export const SignUp = () => {
             console.log(u.user)
             return u.user
           })
-          // setNewUser((u) => {
-          //   u.email = ''
-          //   u.password = ''
-          //   return { ...u }
-          // })
-          // updateProfile(user.user, { displayName: name })
-          // console.log('name is', name)
-          // console.log('display name is ', user.user.displayName)
+          setNewUser({
+            email: '',
+            password: '',
+          })
+          setName('')
+        })
+        .then(() => {
+          Alert.alert('Account created successfully', 'You can now log in', [
+            {
+              text: 'Log in',
+              onPress: () => navigate('Login'),
+            },
+            {
+              text: 'Cancel',
+              onPress: () => null,
+              style: 'destructive',
+            },
+          ])
         })
         .catch((err) => {
           console.error(err)
