@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 import { styles } from '../../styling/caketime'
-import RecipeListing from '../../components/RecipeListing'
+import RecipeListing from '../../components/RecipeListingWithSearch'
 
 export const SearchScreen = ({ route }: { route: any }) => {
   return (

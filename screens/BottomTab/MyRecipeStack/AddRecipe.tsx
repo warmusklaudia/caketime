@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Form, FormItem } from 'react-native-form-component'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
 import Ingredient from '../../../interfaces/Ingredient'
 import Instruction from '../../../interfaces/Instruction'
 import Recipe from '../../../interfaces/Recipe'
 import { styles, typo } from '../../../styling/caketime'
+import { colors } from '../../../styling/colors'
 
 export default () => {
   const [recipe, setRecipe] = useState<Recipe>({
@@ -99,6 +100,7 @@ export default () => {
       <ScrollView>
         <Form onButtonPress={() => console.log('TODO')}>
           <FormItem
+            labelStyle={{}}
             label="Name"
             value={recipe?.name}
             onChangeText={(str: string) =>
@@ -190,3 +192,9 @@ export default () => {
     </View>
   )
 }
+
+const stylesAddRecipe = StyleSheet.create({
+  label: {
+    color: colors.neutral_dark,
+  },
+})

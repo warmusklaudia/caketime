@@ -1,23 +1,28 @@
-import { MaterialBottomTabNavigationProp } from '@react-navigation/material-bottom-tabs'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
-import {
-  createStackNavigator,
-  StackNavigationProp,
-} from '@react-navigation/stack'
+import { StackNavigationProp } from '@react-navigation/stack'
 import { BlurView } from 'expo-blur'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ImageBackground, Text, TouchableOpacity, View } from 'react-native'
-import { Item } from 'react-native-paper/lib/typescript/components/List/List'
 import TopCategories from '../../components/TopCategories'
 import Recipe from '../../interfaces/Recipe'
 import { styles, typo } from '../../styling/caketime'
 import { useAuth } from '../../utils/AuthContext'
+import { endpoint } from '../../utils/Backend'
 import { getRandomRecipe } from '../../utils/GetRandomRecipe'
 
 export const HomeScreen = () => {
   const { user } = useAuth()
+  const [token, setToken] = useState()
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   const [r, setR] = useState<Recipe>(getRandomRecipe)
+
+  // const getToken = async () => {
+  //   const t: string | undefined = await user?.getIdToken()
+  //   //@ts-ignore
+  //   if (t) setToken(t)
+  //   console.log(t)
+  // }
+  // getToken()
 
   return (
     <View style={styles.containerWelcome}>

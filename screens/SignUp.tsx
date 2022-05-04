@@ -17,19 +17,39 @@ import buttons from '../styling/buttons'
 import { styles, typo } from '../styling/caketime'
 import { colors } from '../styling/colors'
 import { useAuth } from '../utils/AuthContext'
+import { endpoint } from '../utils/Backend'
 import { auth } from '../utils/firebase'
 
 export const SignUp = () => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
-
   const [newUser, setNewUser] = useState({
     email: '',
     password: '',
   })
 
   const [name, setName] = useState<string>()
+  const [uid, setUid] = useState('')
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
 
   const { user, setUser } = useAuth()
+
+  const sendUserToBackend = () => {
+    const data = {
+      Email: newUser.email,
+      Password: newUser.password,
+      DisplayName: name,
+      UID: uid,
+    }
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }
+    fetch(`${endpoint}signup`, requestOptions)
+      .then((response) => response.json())
+      .then((res) => console.log(res))
+  }
 
   const registerUser = (): void => {
     if (newUser.email && newUser.password) {
@@ -37,11 +57,10 @@ export const SignUp = () => {
         .then((u: UserCredential) => {
           setUser(async () => {
             if (u.user) await updateProfile(u.user, { displayName: name })
-            console.log('name is', name)
-            console.log('display name is ', u.user?.displayName)
-            console.log(u.user)
+            setUid(() => u.user.uid)
             return u.user
           })
+          sendUserToBackend()
           setNewUser({
             email: '',
             password: '',

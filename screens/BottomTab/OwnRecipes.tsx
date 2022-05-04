@@ -6,6 +6,7 @@ import { colors } from '../../styling/colors'
 import buttons from '../../styling/buttons'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { RecipeListing } from '../../components/RecipeListing'
 
 export const OwnRecipesScreen = () => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
@@ -28,6 +29,7 @@ export const OwnRecipesScreen = () => {
           </Text>
         </View>
       </TouchableOpacity>
+      <RecipeListing route="favorite" screen="DetailsOwn" />
     </View>
   )
 }

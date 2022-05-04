@@ -13,20 +13,21 @@ import categories from '../data/categories.json'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { MaterialBottomTabNavigationProp } from '@react-navigation/material-bottom-tabs'
 import { useEffect, useState } from 'react'
+import { endpoint } from '../utils/Backend'
 export default () => {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  // const fetchData = async () => {
-  //   const resp = await fetch('http://192.168.0.194:3000/categories')
-  //   const data = await resp.json()
-  //   setData(data)
-  //   setIsLoading(false)
-  // }
+  const fetchData = async () => {
+    const resp = await fetch(`${endpoint}categories`)
+    const data = await resp.json()
+    setData(data)
+    setIsLoading(false)
+  }
 
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   const { navigate } =
     useNavigation<MaterialBottomTabNavigationProp<ParamListBase>>()
@@ -52,8 +53,9 @@ export default () => {
     <FlatList
       horizontal
       showsHorizontalScrollIndicator={false}
-      data={categories}
+      data={data}
       renderItem={renderItem}
+      //@ts-ignore
       keyExtractor={(item) => item.id}
     />
   )

@@ -4,40 +4,49 @@ import { useEffect, useState } from 'react'
 import {
   FlatList,
   Image,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native'
-import recipes from '../data/recipes.json'
 import Recipe from '../interfaces/Recipe'
 import { sizing } from '../styling/caketime'
-import { colors } from '../styling/colors'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { stylesRecipe } from '../styling/listing'
+import { useAuth } from '../utils/AuthContext'
+import { endpoint } from '../utils/Backend'
+import { getWithAuth } from '../utils/data-acces'
 
-export default ({ cat }: { cat?: string | undefined }) => {
-  const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
-  const [text, setText] = useState<string | undefined>(cat)
+export const RecipeListing = ({
+  route,
+  screen,
+}: {
+  route: string
+  screen: string
+}) => {
+  const [data, setData] = useState([])
+
+  const { user } = useAuth()
+
+  const getData = async () => {
+    const t: string | undefined = await user?.getIdToken()
+    const uid: string | undefined = await user?.uid
+    getWithAuth(`${endpoint}users/${route}/${uid}`, t).then((recipes) => {
+      route == 'favorite'
+        ? setData(recipes.favoriteRecipes)
+        : setData(recipes.myRecipes)
+    })
+  }
 
   useEffect(() => {
-    setText(cat)
-  }, [cat])
+    getData()
+  }, [])
 
-  const filterdData = text
-    ? recipes.filter((item) => {
-        const itemData =
-          item.name.toUpperCase() + item.category.name.toUpperCase()
-        const textData = text.toUpperCase()
-        return itemData.indexOf(textData) > -1
-      })
-    : recipes
-
+  const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   const renderItem = ({ item }: { item: Recipe }) => {
     return (
       <TouchableOpacity
         style={stylesRecipe.container}
-        onPress={() => navigate('DetailsSearch', { payload: item })}
+        onPress={() => navigate(screen, { payload: item })}
       >
         <View style={stylesRecipe.recipeHolder}>
           <Image style={stylesRecipe.img} source={{ uri: item.img }} />
@@ -47,65 +56,13 @@ export default ({ cat }: { cat?: string | undefined }) => {
     )
   }
   return (
-    <View>
-      <View style={stylesRecipe.inputSearchSection}>
-        <MaterialCommunityIcons
-          name="magnify"
-          color={colors.neutral_dark}
-          size={24}
-          style={{ marginRight: 4 }}
-        />
-        <TextInput
-          style={{ flex: 1 }}
-          onChangeText={(str) => {
-            setText(str)
-          }}
-          value={text}
-          placeholder="Search"
-          clearButtonMode="always"
-        />
-      </View>
+    <View style={{ flex: 1, marginTop: sizing.baseLine * 2, width: '90%' }}>
       <FlatList
-        data={filterdData}
+        data={data}
         renderItem={renderItem}
+        //@ts-ignore
         keyExtractor={(item) => item.recipeId}
       />
     </View>
   )
 }
-
-const stylesRecipe = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: colors.alpha_light,
-  },
-  recipeHolder: {
-    flexDirection: 'row',
-    marginVertical: sizing.baseLine,
-    alignItems: 'center',
-  },
-  name: {
-    fontSize: sizing.baseLine * 2,
-    marginHorizontal: sizing.baseLine * 5,
-    letterSpacing: 2,
-    color: colors.beta_dark,
-  },
-  img: {
-    borderRadius: 100,
-    width: 110,
-    height: 110,
-  },
-  inputSearchSection: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    borderWidth: 1,
-    borderColor: colors.alpha_light,
-    borderRadius: sizing.baseLine / 2,
-    width: '90%',
-    height: 5 * sizing.baseLine,
-    padding: sizing.baseLine,
-    marginBottom: sizing.baseLine * 2,
-  },
-})

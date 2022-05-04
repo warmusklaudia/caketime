@@ -17,22 +17,19 @@ export const Login = () => {
   const [show, setShow] = useState(false)
   const [error, setError] = useState('')
   const [userCredentials, setUserCredentials] = useState({
-    email: '',
-    password: '',
+    email: 'test@gmail.com',
+    password: 'test123',
   })
 
   const { setUser } = useAuth()
+
   const SignIn = () => {
-    console.log('sign in...')
-    console.log(userCredentials.email, userCredentials.password)
-    console.log(userCredentials)
     signInWithEmailAndPassword(
       auth,
       userCredentials.email,
       userCredentials.password,
     )
       .then((u: UserCredential) => {
-        console.log('signed in!!', userCredentials.email)
         setUser(u.user)
         setUserCredentials({
           email: '',

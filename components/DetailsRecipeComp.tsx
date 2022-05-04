@@ -21,7 +21,7 @@ export default ({ route, screen }: { route: any; screen: string }) => {
     const ingredients: JSX.Element[] = []
     for (let i = 0; i < payload.ingredients.length; i++) {
       ingredients.push(
-        <Text style={{ textTransform: 'lowercase' }}>
+        <Text key={i} style={{ textTransform: 'lowercase' }}>
           - {payload.ingredients[i].quantity} {payload.ingredients[i].name}
         </Text>,
       )

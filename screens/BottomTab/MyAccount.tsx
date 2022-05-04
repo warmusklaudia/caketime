@@ -7,8 +7,11 @@ import { MaterialBottomTabNavigationProp } from '@react-navigation/material-bott
 import buttons from '../../styling/buttons'
 import ProfileButtons from '../../components/ProfileButtons'
 import { Icon } from 'react-native-paper/lib/typescript/components/Avatar/Avatar'
+import { useAuth } from '../../utils/AuthContext'
 
 export const MyAccountScreen = () => {
+  const { user } = useAuth()
+
   const { navigate } =
     useNavigation<MaterialBottomTabNavigationProp<ParamListBase>>()
   return (
@@ -22,8 +25,8 @@ export const MyAccountScreen = () => {
       <TouchableOpacity style={buttons.buttonAddPhoto}>
         <MaterialCommunityIcons name="plus" size={26} />
       </TouchableOpacity>
-      <Text style={typo.name}>Klaudia Warmus</Text>
-      <Text style={typo.email}>klaudia.warmus@student.howest.be</Text>
+      <Text style={typo.name}>{user?.displayName}</Text>
+      <Text style={typo.email}>{user?.email}</Text>
       <ProfileButtons
         route="Favorites"
         icon={() => 'heart'}
