@@ -1,20 +1,26 @@
 import { useEffect, useRef, useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { Form, FormItem } from 'react-native-form-component'
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Form, FormItem, Picker } from 'react-native-form-component'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
 import Ingredient from '../../../interfaces/Ingredient'
 import Instruction from '../../../interfaces/Instruction'
 import Recipe from '../../../interfaces/Recipe'
 import { styles, typo } from '../../../styling/caketime'
 import { colors } from '../../../styling/colors'
+import { useAuth } from '../../../utils/AuthContext'
+import { endpoint } from '../../../utils/Backend'
 
 export default () => {
+  const [cat, setCat] = useState('')
+  const [difficulty, setDiff] = useState('')
+  const { user } = useAuth()
   const [recipe, setRecipe] = useState<Recipe>({
     name: '',
     time: 0,
     category: {
       name: '',
     },
+    uidOwner: '',
     servings: 0,
     difficulty: '',
     ingredients: [],
@@ -94,11 +100,53 @@ export default () => {
     ))
   }
 
+  const sendToBackend = async () => {
+    const uid: string | undefined = user?.uid
+    const t: string | undefined = await user?.getIdToken()
+    const data: Recipe = {
+      name: recipe.name,
+      time: recipe.time,
+      uidOwner: uid,
+      category: recipe.category,
+      servings: recipe.servings,
+      difficulty: recipe.difficulty,
+      ingredients: recipe.ingredients,
+      instructions: recipe.instructions,
+    }
+    const requestOptions = {
+      method: 'PUT',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + t,
+      }),
+      body: JSON.stringify(data),
+    }
+    fetch(`${endpoint}users/${uid}/recipes/myrecipes/add`, requestOptions).then(
+      (response) => response.json().then((res) => console.log(res)),
+    )
+  }
+
+  const Submit = () => {
+    if (
+      recipe.name &&
+      recipe.difficulty &&
+      recipe.category.name &&
+      recipe.time != 0 &&
+      recipe.servings != 0 &&
+      recipe.ingredients.length != 0 &&
+      recipe.instructions.length != 0
+    )
+      sendToBackend()
+    else {
+      Alert.alert('Something went wrong', 'You must complete all fields')
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Text style={typo.pageTitle}>Add new recipe</Text>
       <ScrollView>
-        <Form onButtonPress={() => console.log('TODO')}>
+        <Form onButtonPress={Submit}>
           <FormItem
             labelStyle={{}}
             label="Name"
@@ -109,6 +157,7 @@ export default () => {
                 return { ...oldRecipe }
               })
             }
+            isRequired
           />
           <FormItem
             label="Time"
@@ -121,15 +170,23 @@ export default () => {
             }
             keyboardType="numeric"
           />
-          <FormItem
+          <Picker
+            items={[
+              { label: 'Cakes', value: 'Cakes' },
+              { label: 'Muffins', value: 'Muffins' },
+              { label: 'Meringues', value: 'Meringues' },
+              { label: 'Others', value: 'Others' },
+            ]}
             label="Category"
-            value={recipe?.category.name}
-            onChangeText={(str: string) =>
+            placeholder="Choose category"
+            selectedValue={cat}
+            onSelection={(item) => {
+              setCat(item.value.toString())
               setRecipe((oldRecipe: Recipe) => {
-                oldRecipe.category.name = str
+                oldRecipe.category.name = item.value.toString()
                 return { ...oldRecipe }
               })
-            }
+            }}
           />
           <FormItem
             label="Servings"
@@ -142,25 +199,33 @@ export default () => {
             }
             keyboardType="numeric"
           />
-          <FormItem
+          <Picker
+            items={[
+              { label: 'Easy', value: 'Easy' },
+              { label: 'Medium', value: 'Medium' },
+              { label: 'Hard', value: 'Hard' },
+            ]}
             label="Difficulty"
-            value={recipe?.difficulty}
-            onChangeText={(str: string) =>
+            selectedValue={difficulty}
+            placeholder="Choose difficulty"
+            onSelection={(item) => {
+              setDiff(item.value.toString())
               setRecipe((oldRecipe: Recipe) => {
-                oldRecipe.difficulty = str
+                oldRecipe.difficulty = item.value.toString()
                 return { ...oldRecipe }
               })
-            }
+            }}
           />
           <FormItem
             label="How much ingredients?"
             value={recipe.ingredients.length.toString()}
             onChangeText={(str: string) => {
               setRecipe((oldRecipe: Recipe) => {
-                oldRecipe.ingredients = new Array(+str).fill({
-                  name: '',
-                  quantity: '',
-                })
+                const array: Ingredient[] | undefined = []
+                for (let i = 0; i < +str; i++) {
+                  array[i] = { name: '', quantity: '' }
+                }
+                oldRecipe.ingredients = array
                 return { ...oldRecipe }
               })
             }}
@@ -172,10 +237,11 @@ export default () => {
             value={recipe.instructions.length.toString()}
             onChangeText={(str: string) => {
               setRecipe((oldRecipe: Recipe) => {
-                oldRecipe.instructions = new Array(+str).fill({
-                  name: '',
-                  manual: '',
-                })
+                const array: Instruction[] | undefined = []
+                for (let i = 0; i < +str; i++) {
+                  array[i] = { name: '', manual: '' }
+                }
+                oldRecipe.instructions = array
                 return { ...oldRecipe }
               })
             }}

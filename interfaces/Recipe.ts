@@ -8,9 +8,8 @@ export default interface Recipe {
   time: number
   category: Category
   servings: number
-  steps?: number
   difficulty: string
-  quantityIngredients?: number
+  uidOwner: string | undefined
   ingredients: Ingredient[]
   instructions: Instruction[]
   img?: string

@@ -29,7 +29,7 @@ export const OwnRecipesScreen = () => {
           </Text>
         </View>
       </TouchableOpacity>
-      <RecipeListing route="favorite" screen="DetailsOwn" />
+      <RecipeListing route="my" screen="DetailsOwn" />
     </View>
   )
 }

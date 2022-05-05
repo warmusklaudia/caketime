@@ -1,5 +1,5 @@
 export default interface Instruction {
-  id: string
+  id?: string
   name: string
   manual: string
 }

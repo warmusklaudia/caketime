@@ -2,6 +2,7 @@ import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import {
   Image,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,10 +13,18 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import buttons from '../styling/buttons'
 import { sizing, typo } from '../styling/caketime'
 import { colors } from '../styling/colors'
+import { useState } from 'react'
+import { endpoint } from '../utils/Backend'
+import { useAuth } from '../utils/AuthContext'
+import { getWithAuth } from '../utils/data-acces'
+import Recipe from '../interfaces/Recipe'
 
 export default ({ route, screen }: { route: any; screen: string }) => {
   const { payload } = route.params
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
+  const [isFavorite, setFavorite] = useState<boolean>()
+  const { user } = useAuth()
+  const [data, setData] = useState([])
 
   const showIngredients = (): JSX.Element[] => {
     const ingredients: JSX.Element[] = []
@@ -29,6 +38,58 @@ export default ({ route, screen }: { route: any; screen: string }) => {
     return ingredients
   }
 
+  const sendFavToBackend = async () => {
+    const uid: string | undefined = user?.uid
+    const t: string | undefined = await user?.getIdToken()
+    const data = {
+      recipeId: `${payload.recipeId}`,
+    }
+    console.log(data)
+    const requestOptions = {
+      method: 'PUT',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + t,
+      }),
+      body: JSON.stringify(data),
+    }
+    fetch(`${endpoint}users/${uid}/recipes/favorite`, requestOptions).then(
+      (response) => response.json(),
+    )
+  }
+
+  const checkFavorite = () => {
+    if (isFavorite == true) {
+      checkIsFavorite()
+      sendFavToBackend()
+    } else {
+      checkIsFavorite()
+      sendFavToBackend()
+    }
+  }
+
+  const checkIsFavorite = async () => {
+    const uid: string | undefined = await user?.uid
+    const t: string | undefined = await user?.getIdToken()
+    getWithAuth(`${endpoint}users/favorite/${uid}`, t).then((recipes) => {
+      setData(recipes.favoriteRecipes)
+    })
+    data.map((recipes: Recipe[], i: number) => {
+      //@ts-ignore
+      if (data[i].recipeId == payload.recipeId) {
+        setFavorite(() => true)
+      }
+    })
+  }
+
+  const Favorite = () => {
+    if (isFavorite == true) {
+      return <MaterialCommunityIcons name="heart" size={34} />
+    } else {
+      return <MaterialCommunityIcons name="heart-outline" size={34} />
+    }
+  }
+
   return (
     <View
       style={[stylesDetails.container, { justifyContent: 'space-between' }]}
@@ -39,7 +100,12 @@ export default ({ route, screen }: { route: any; screen: string }) => {
           <MaterialCommunityIcons name="plus" size={26} />
         </TouchableOpacity>
       </View>
-      <Text style={stylesDetails.name}>{payload.name}</Text>
+      <View style={{ justifyContent: 'center', flexDirection: 'row' }}>
+        <Text style={[stylesDetails.name, { marginRight: 12 }]}>
+          {payload.name}
+        </Text>
+        <Pressable onPress={checkFavorite}>{Favorite()}</Pressable>
+      </View>
       <View style={stylesDetails.infoHolder}>
         <View style={stylesDetails.detailsHolder}>
           <Text>{payload.time} min</Text>

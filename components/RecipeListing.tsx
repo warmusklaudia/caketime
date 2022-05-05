@@ -39,7 +39,7 @@ export const RecipeListing = ({
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [data])
 
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
   const renderItem = ({ item }: { item: Recipe }) => {
