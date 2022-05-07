@@ -12,13 +12,11 @@ import { auth } from '../utils/firebase'
 
 export const Login = () => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
-  // const [email, setEmail] = useState('')
-  // const [pass, setPass] = useState('')
   const [show, setShow] = useState(false)
   const [error, setError] = useState('')
   const [userCredentials, setUserCredentials] = useState({
-    email: 'test@gmail.com',
-    password: 'test123',
+    email: '',
+    password: '',
   })
 
   const { setUser } = useAuth()
@@ -41,7 +39,6 @@ export const Login = () => {
         setError(err.toString())
       })
   }
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShow(!show)
@@ -49,6 +46,7 @@ export const Login = () => {
     return () => clearTimeout(timeout)
   }, [show])
 
+  //TODO: errors
   const showError = () => {
     if (error === 'FirebaseError: Firebase: Error (auth/invalid-email).') {
       return <Text style={{ color: 'red' }}>Invalid email</Text>
@@ -83,6 +81,7 @@ export const Login = () => {
         <FloatingLabelInput
           label={'Password'}
           isPassword
+          showPasswordImageStyles={{ tintColor: colors.beta_dark }}
           value={userCredentials.password}
           onChangeText={(pass) =>
             setUserCredentials((u) => {
@@ -105,12 +104,6 @@ export const Login = () => {
         onPress={() => navigate('SignUp')}
       >
         <Text style={typo.textSubButton}>SIGN UP</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={buttons.subButton}
-        onPress={() => navigate('Welcome')}
-      >
-        <Text style={typo.textSubButton}>SKIP</Text>
       </TouchableOpacity>
     </View>
   )

@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
     marginVertical: 1.25 * sizing.baseLine,
   },
   imgHolder: {
+    marginVertical: sizing.baseLine * 3,
     ...Platform.select({
       ios: {
         shadowColor: colors.neutral_dark_x,

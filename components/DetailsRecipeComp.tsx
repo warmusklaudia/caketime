@@ -1,7 +1,9 @@
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import {
+  Animated,
   Image,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -18,6 +20,7 @@ import { endpoint } from '../utils/Backend'
 import { useAuth } from '../utils/AuthContext'
 import { getWithAuth } from '../utils/data-acces'
 import Recipe from '../interfaces/Recipe'
+import { launchImageLibraryAsync, MediaTypeOptions } from 'expo-image-picker'
 
 export default ({ route, screen }: { route: any; screen: string }) => {
   const { payload } = route.params
@@ -25,15 +28,29 @@ export default ({ route, screen }: { route: any; screen: string }) => {
   const [isFavorite, setFavorite] = useState<boolean>()
   const { user } = useAuth()
   const [data, setData] = useState([])
+  const [image, setImage] = useState<string>()
 
+  //Ingredients: Animation
   const showIngredients = (): JSX.Element[] => {
     const ingredients: JSX.Element[] = []
+    let timingDelay: number = 0
     for (let i = 0; i < payload.ingredients.length; i++) {
+      const animatedOpacity = new Animated.Value(0)
       ingredients.push(
-        <Text key={i} style={{ textTransform: 'lowercase' }}>
+        <Animated.Text
+          key={i}
+          style={{ textTransform: 'lowercase', opacity: animatedOpacity }}
+        >
           - {payload.ingredients[i].quantity} {payload.ingredients[i].name}
-        </Text>,
+        </Animated.Text>,
       )
+      Animated.timing(animatedOpacity, {
+        toValue: 1,
+        duration: 300,
+        delay: timingDelay * 150,
+        useNativeDriver: true,
+      }).start()
+      timingDelay++
     }
     return ingredients
   }
@@ -44,7 +61,6 @@ export default ({ route, screen }: { route: any; screen: string }) => {
     const data = {
       recipeId: `${payload.recipeId}`,
     }
-    console.log(data)
     const requestOptions = {
       method: 'PUT',
       headers: new Headers({
@@ -90,15 +106,41 @@ export default ({ route, screen }: { route: any; screen: string }) => {
     }
   }
 
+  const sendToBlob = (img: string) => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: new Headers({
+        'x-ms-blob-type': 'BlockBlob',
+        'Content-Type': 'application/octet-stream',
+      }),
+      body: img,
+    }
+    fetch(
+      `https://caketime.blob.core.windows.net/recipes/${payload.recipeId}.jpg?sv=2020-08-04&ss=bf&srt=sco&sp=rwdlacitfx&se=2023-05-06T23:19:07Z&st=2022-05-06T15:19:07Z&spr=https,http&sig=0kZnWvWv5rDZyTyTps2BIv4z%2B1fHZ50SFcKzUXZoGjg%3D`,
+      requestOptions,
+    ).then((response) => response.json().then((res) => console.log(res)))
+  }
+
+  const getImage = async () => {
+    let result = await launchImageLibraryAsync({
+      mediaTypes: MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+      base64: true,
+    })
+
+    if (!result.cancelled) {
+      setImage(result.uri)
+    }
+  }
+
   return (
     <View
       style={[stylesDetails.container, { justifyContent: 'space-between' }]}
     >
       <View style={stylesDetails.imgHolder}>
         <Image style={stylesDetails.img} source={{ uri: payload.img }} />
-        <TouchableOpacity style={buttons.buttonAddPhoto}>
-          <MaterialCommunityIcons name="plus" size={26} />
-        </TouchableOpacity>
       </View>
       <View style={{ justifyContent: 'center', flexDirection: 'row' }}>
         <Text style={[stylesDetails.name, { marginRight: 12 }]}>
@@ -167,6 +209,17 @@ const stylesDetails = StyleSheet.create({
   },
   imgHolder: {
     alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: colors.neutral_dark_x,
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 3,
+      },
+    }),
   },
   infoHolder: {
     alignSelf: 'center',

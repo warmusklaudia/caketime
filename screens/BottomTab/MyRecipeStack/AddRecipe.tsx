@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useRef, useState } from 'react'
+import { Alert, StyleSheet, Text, View } from 'react-native'
 import { Form, FormItem, Picker } from 'react-native-form-component'
-import { ScrollView, TextInput } from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native-gesture-handler'
 import Ingredient from '../../../interfaces/Ingredient'
 import Instruction from '../../../interfaces/Instruction'
 import Recipe from '../../../interfaces/Recipe'
@@ -9,8 +9,10 @@ import { styles, typo } from '../../../styling/caketime'
 import { colors } from '../../../styling/colors'
 import { useAuth } from '../../../utils/AuthContext'
 import { endpoint } from '../../../utils/Backend'
+import buttons from '../../../styling/buttons'
 
 export default () => {
+  const scrollRef = useRef<ScrollView>()
   const [cat, setCat] = useState('')
   const [difficulty, setDiff] = useState('')
   const { user } = useAuth()
@@ -28,7 +30,6 @@ export default () => {
   })
 
   const addIngredients = (): JSX.Element[] => {
-    // Name
     const [textValueName, setTextValueName] = useState('')
     const refInputsName = useRef<string[]>([textValueName])
     const setInputValueName = (index: number, value: string) => {
@@ -36,7 +37,6 @@ export default () => {
       inputs[index] = value
       setTextValueName(value)
     }
-    // Quantity
     const [textValueQuantity, setTextValueQuantity] = useState('')
     const refInputsQuantity = useRef<string[]>([textValueQuantity])
     const setInputValueQuantity = (index: number, value: string) => {
@@ -122,7 +122,7 @@ export default () => {
       body: JSON.stringify(data),
     }
     fetch(`${endpoint}users/${uid}/recipes/myrecipes/add`, requestOptions).then(
-      (response) => response.json().then((res) => console.log(res)),
+      (response) => response.json(),
     )
   }
 
@@ -135,20 +135,48 @@ export default () => {
       recipe.servings != 0 &&
       recipe.ingredients.length != 0 &&
       recipe.instructions.length != 0
-    )
+    ) {
       sendToBackend()
-    else {
+      const clearRecipe: Recipe = {
+        name: '',
+        time: 0,
+        category: {
+          name: '',
+        },
+        uidOwner: '',
+        servings: 0,
+        difficulty: '',
+        ingredients: [],
+        instructions: [],
+      }
+      setRecipe(clearRecipe)
+      setCat('')
+      setDiff('')
+      scrollRef.current?.scrollTo({
+        y: 0,
+        animated: true,
+      })
+      Alert.alert('Recipe added successfully')
+    } else {
       Alert.alert('Something went wrong', 'You must complete all fields')
     }
   }
-
+  //TODO: Change Form to t-comb-form-native
   return (
     <View style={styles.container}>
       <Text style={typo.pageTitle}>Add new recipe</Text>
-      <ScrollView>
-        <Form onButtonPress={Submit}>
+      <ScrollView
+        //@ts-ignore
+        ref={scrollRef}
+        showsVerticalScrollIndicator={false}
+      >
+        <Form
+          buttonStyle={[buttons.button, { alignSelf: 'center' }]}
+          buttonText="Add new recipe"
+          style={{ width: 250, marginVertical: 20 }}
+          onButtonPress={Submit}
+        >
           <FormItem
-            labelStyle={{}}
             label="Name"
             value={recipe?.name}
             onChangeText={(str: string) =>

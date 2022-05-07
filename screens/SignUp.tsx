@@ -2,15 +2,10 @@ import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import {
   createUserWithEmailAndPassword,
-  getAuth,
-  signInAnonymously,
-  signInWithEmailAndPassword,
-  updateCurrentUser,
   updateProfile,
-  User,
   UserCredential,
 } from 'firebase/auth'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Alert, Text, TouchableOpacity, View } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import buttons from '../styling/buttons'
@@ -28,13 +23,9 @@ export const SignUp = () => {
   })
 
   const [name, setName] = useState<string>()
-  const [uid, setUid] = useState('')
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
+  const { setUser } = useAuth()
 
-  const { user, setUser } = useAuth()
-
-  const sendUserToBackend = () => {
+  const sendUserToBackend = (uid: string) => {
     const data = {
       Email: newUser.email,
       Password: newUser.password,
@@ -52,15 +43,15 @@ export const SignUp = () => {
   }
 
   const registerUser = (): void => {
-    if (newUser.email && newUser.password) {
+    if (newUser.email && newUser.password && name) {
       createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
         .then((u: UserCredential) => {
           setUser(async () => {
             if (u.user) await updateProfile(u.user, { displayName: name })
-            setUid(() => u.user.uid)
+            sendUserToBackend(u.user.uid)
             return u.user
           })
-          sendUserToBackend()
+
           setNewUser({
             email: '',
             password: '',
@@ -73,16 +64,13 @@ export const SignUp = () => {
               text: 'Log in',
               onPress: () => navigate('Login'),
             },
-            {
-              text: 'Cancel',
-              onPress: () => null,
-              style: 'destructive',
-            },
           ])
         })
         .catch((err) => {
           console.error(err)
         })
+    } else {
+      Alert.alert('Something went wrong', 'You must complete all fields')
     }
   }
 
@@ -124,6 +112,7 @@ export const SignUp = () => {
         <FloatingLabelInput
           label={'Password'}
           isPassword
+          showPasswordImageStyles={{ tintColor: colors.beta_dark }}
           value={newUser.password}
           onChangeText={(pass) =>
             setNewUser((u) => {
@@ -138,19 +127,6 @@ export const SignUp = () => {
           }}
         />
       </View>
-      {/* <View style={styles.label}>
-        <FloatingLabelInput
-          label={'Confirm password'}
-          isPassword
-          value={confirmPass}
-          onChangeText={(confirmPass) => setConfirmPass(confirmPass)}
-          containerStyles={styles.containerStyles}
-          customLabelStyles={{
-            colorBlurred: colors.neutral,
-            colorFocused: colors.neutral_dark_x,
-          }}
-        />
-      </View> */}
       <TouchableOpacity style={buttons.buttonLogin} onPress={registerUser}>
         <Text style={typo.textButton}>SIGN UP</Text>
       </TouchableOpacity>

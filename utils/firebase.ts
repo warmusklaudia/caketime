@@ -1,14 +1,21 @@
 import { FirebaseOptions, initializeApp } from 'firebase/app'
 import { Auth, getAuth } from 'firebase/auth'
+import {
+  VITE_apiKey,
+  VITE_appId,
+  VITE_authDomain,
+  VITE_messagingSenderId,
+  VITE_projectId,
+  VITE_storageBucket,
+} from './Backend'
 
 const firebaseConfig: FirebaseOptions = {
-  apiKey: 'AIzaSyCIn_nqu-vB-rXLH0RCj4EaH5boCl4N-OU',
-  authDomain: 'caketime-561e3.firebaseapp.com',
-  projectId: 'caketime-561e3',
-  storageBucket: 'caketime-561e3.appspot.com',
-  messagingSenderId: '1077966224376',
-  appId: '1:1077966224376:web:0e2cdb6657a10f04d1740d',
-  measurementId: 'G-E3FTD88FJE',
+  apiKey: VITE_apiKey,
+  authDomain: VITE_authDomain,
+  projectId: VITE_projectId,
+  storageBucket: VITE_storageBucket,
+  messagingSenderId: VITE_messagingSenderId,
+  appId: VITE_appId,
 }
 
 export const app = initializeApp(firebaseConfig)

@@ -12,17 +12,8 @@ import { getRandomRecipe } from '../../utils/GetRandomRecipe'
 
 export const HomeScreen = () => {
   const { user } = useAuth()
-  const [token, setToken] = useState()
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
-  const [r, setR] = useState<Recipe>(getRandomRecipe)
-
-  // const getToken = async () => {
-  //   const t: string | undefined = await user?.getIdToken()
-  //   //@ts-ignore
-  //   if (t) setToken(t)
-  //   console.log(t)
-  // }
-  // getToken()
+  const [r] = useState<Recipe>(getRandomRecipe)
 
   return (
     <View style={styles.containerWelcome}>

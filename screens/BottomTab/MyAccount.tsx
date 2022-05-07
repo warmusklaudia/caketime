@@ -19,12 +19,9 @@ export const MyAccountScreen = () => {
       <View style={styles.imgHolder}>
         <Image
           style={styles.img}
-          source={require('../../assets/img/20210424_153107.jpg')}
+          source={require('../../assets/img/Profile.png')}
         />
       </View>
-      <TouchableOpacity style={buttons.buttonAddPhoto}>
-        <MaterialCommunityIcons name="plus" size={26} />
-      </TouchableOpacity>
       <Text style={typo.name}>{user?.displayName}</Text>
       <Text style={typo.email}>{user?.email}</Text>
       <ProfileButtons
