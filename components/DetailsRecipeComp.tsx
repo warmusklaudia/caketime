@@ -1,6 +1,7 @@
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import {
+  Alert,
   Animated,
   Image,
   Platform,
@@ -75,6 +76,7 @@ export default ({ route, screen }: { route: any; screen: string }) => {
   }
 
   const checkFavorite = () => {
+    Alert.alert('Successfully added/removed from favorites')
     if (isFavorite == true) {
       checkIsFavorite()
       sendFavToBackend()

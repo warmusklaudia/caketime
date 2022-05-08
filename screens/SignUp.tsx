@@ -41,9 +41,9 @@ export const SignUp = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     }
-    fetch(`${endpoint}signup`, requestOptions)
-      .then((response) => response.json())
-      .then((res) => console.log(res))
+    fetch(`${endpoint}signup`, requestOptions).then((response) =>
+      response.json(),
+    )
   }
 
   const registerUser = (): void => {
