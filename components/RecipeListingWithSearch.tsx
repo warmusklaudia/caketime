@@ -33,17 +33,6 @@ export default ({ cat }: { cat?: string | undefined }) => {
     )
   }
 
-  // const fetchData = async () => {
-  //   const resp = await fetch(`${endpoint}recipes/owner/1`, {
-  //     headers: new Headers({
-  //       Authorization: 'Bearer ' + token,
-  //     }),
-  //   })
-  //   const data = await resp.json()
-  //   setData(data)
-  //   setIsLoading(false)
-  // }
-
   useEffect(() => {
     setText(cat)
     getData()

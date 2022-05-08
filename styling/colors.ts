@@ -15,4 +15,5 @@ export const colors = {
   neutral_dark_x: '#1A1718',
 
   white: '#fdfdfd',
+  error: '#B00020',
 }

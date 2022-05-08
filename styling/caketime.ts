@@ -125,7 +125,8 @@ export const typo = StyleSheet.create({
     color: colors.white,
   },
   textSubButton: {
-    fontSize: 1.75 * sizing.baseLine,
+    fontSize: 2 * sizing.baseLine,
+    fontWeight: '600',
     color: colors.neutral_dark_x,
   },
   titleRecipe: {

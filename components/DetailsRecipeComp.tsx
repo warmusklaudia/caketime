@@ -99,11 +99,19 @@ export default ({ route, screen }: { route: any; screen: string }) => {
   }
 
   const Favorite = () => {
-    if (isFavorite == true) {
-      return <MaterialCommunityIcons name="heart" size={34} />
-    } else {
-      return <MaterialCommunityIcons name="heart-outline" size={34} />
-    }
+    // if (isFavorite == true) {
+    //   return <MaterialCommunityIcons name="heart" size={34} />
+    // } else {
+    //   return <MaterialCommunityIcons name="heart-outline" size={34} />
+    // }
+    return (
+      <MaterialCommunityIcons
+        style={{ padding: sizing.baseLine / 2 }}
+        name="heart"
+        size={30}
+        color={colors.neutral_dark}
+      />
+    )
   }
 
   const sendToBlob = (img: string) => {
@@ -146,7 +154,9 @@ export default ({ route, screen }: { route: any; screen: string }) => {
         <Text style={[stylesDetails.name, { marginRight: 12 }]}>
           {payload.name}
         </Text>
-        <Pressable onPress={checkFavorite}>{Favorite()}</Pressable>
+        <TouchableOpacity onPress={checkFavorite}>
+          {Favorite()}
+        </TouchableOpacity>
       </View>
       <View style={stylesDetails.infoHolder}>
         <View style={stylesDetails.detailsHolder}>

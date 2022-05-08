@@ -8,6 +8,7 @@ import {
 import { useState } from 'react'
 import { Alert, Text, TouchableOpacity, View } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
+import { FormErrors } from '../interfaces/FormErrors'
 import buttons from '../styling/buttons'
 import { styles, typo } from '../styling/caketime'
 import { colors } from '../styling/colors'
@@ -20,6 +21,9 @@ export const SignUp = () => {
   const [newUser, setNewUser] = useState({
     email: '',
     password: '',
+  })
+  const [errors, setErrors] = useState<FormErrors>({
+    generic: { title: '', message: '' },
   })
 
   const [name, setName] = useState<string>()
@@ -67,7 +71,15 @@ export const SignUp = () => {
           ])
         })
         .catch((err) => {
-          console.error(err)
+          setErrors((currentErrors: FormErrors) => {
+            currentErrors.generic = {
+              title: err.code,
+              message: err.message,
+            }
+            return { ...currentErrors }
+          })
+
+          console.dir(err)
         })
     } else {
       Alert.alert('Something went wrong', 'You must complete all fields')
@@ -76,6 +88,14 @@ export const SignUp = () => {
 
   return (
     <View style={styles.containerStart}>
+      {errors.generic.title && errors.generic.message ? (
+        <Text style={{ color: colors.error }}>
+          {errors.generic.title.substring(5).charAt(0).toUpperCase() +
+            errors.generic.title.slice(6).replaceAll('-', ' ')}
+        </Text>
+      ) : (
+        <Text>{errors.generic.message}</Text>
+      )}
       <View style={styles.label}>
         <FloatingLabelInput
           label={'Email'}

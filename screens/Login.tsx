@@ -1,9 +1,10 @@
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { signInWithEmailAndPassword, UserCredential } from 'firebase/auth'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
+import { FormErrors } from '../interfaces/FormErrors'
 import buttons from '../styling/buttons'
 import { styles, typo } from '../styling/caketime'
 import { colors } from '../styling/colors'
@@ -12,8 +13,9 @@ import { auth } from '../utils/firebase'
 
 export const Login = () => {
   const { navigate } = useNavigation<StackNavigationProp<ParamListBase>>()
-  const [show, setShow] = useState(false)
-  const [error, setError] = useState('')
+  const [errors, setErrors] = useState<FormErrors>({
+    generic: { title: '', message: '' },
+  })
   const [userCredentials, setUserCredentials] = useState({
     email: '',
     password: '',
@@ -36,29 +38,28 @@ export const Login = () => {
         navigate('Welcome')
       })
       .catch((err) => {
-        setError(err.toString())
-      })
-  }
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShow(!show)
-    }, 5000)
-    return () => clearTimeout(timeout)
-  }, [show])
+        setErrors((currentErrors: FormErrors) => {
+          currentErrors.generic = {
+            title: err.code,
+            message: err.message,
+          }
+          return { ...currentErrors }
+        })
 
-  //TODO: errors
-  const showError = () => {
-    if (error === 'FirebaseError: Firebase: Error (auth/invalid-email).') {
-      return <Text style={{ color: 'red' }}>Invalid email</Text>
-    }
-    if (error === 'FirebaseError: Firebase: Error (auth/wrong-password).') {
-      return <Text style={{ color: 'red' }}>Wrong password</Text>
-    }
+        console.dir(err)
+      })
   }
 
   return (
     <View style={styles.containerStart}>
-      {showError()}
+      {errors.generic.title && errors.generic.message ? (
+        <Text style={{ color: colors.error }}>
+          {errors.generic.title.substring(5).charAt(0).toUpperCase() +
+            errors.generic.title.slice(6).replaceAll('-', ' ')}
+        </Text>
+      ) : (
+        <Text>{errors.generic.message}</Text>
+      )}
       <View style={styles.label}>
         <FloatingLabelInput
           label={'Email'}
@@ -99,6 +100,7 @@ export const Login = () => {
       <TouchableOpacity style={buttons.buttonLogin} onPress={SignIn}>
         <Text style={typo.textButton}>LOGIN</Text>
       </TouchableOpacity>
+      <Text style={{ fontSize: 14 }}>OR</Text>
       <TouchableOpacity
         style={buttons.subButton}
         onPress={() => navigate('SignUp')}

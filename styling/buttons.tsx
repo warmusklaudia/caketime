@@ -27,7 +27,7 @@ export default StyleSheet.create({
     backgroundColor: colors.beta,
   },
   subButton: {
-    marginBottom: sizing.baseLine * 2,
+    marginVertical: sizing.baseLine,
   },
   button: {
     marginTop: 2 * sizing.baseLine,
