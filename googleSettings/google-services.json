@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1077966224376",
+    "project_id": "caketime-561e3",
+    "storage_bucket": "caketime-561e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077966224376:android:1feefd54d6fdbef4d1740d",
+        "android_client_info": {
+          "package_name": "com.company.caketime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077966224376-dh13gaqfutkon43hm0155m79s2o295r5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvumXCC3TUiXTcQhnQ2cHltQvNhPWZ6vM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077966224376-dh13gaqfutkon43hm0155m79s2o295r5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1077966224376-6ksdkrtqtmkn7saknnk8m1b0ghf8724n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.company.caketime"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

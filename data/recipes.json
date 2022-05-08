@@ -1,0 +1,527 @@
+[
+  {
+    "recipeId": "624c4908b62b70399ec63e93",
+    "name": "Apple cake",
+    "time": 90,
+    "category": {
+      "id": "624c42fafa5c324421899f19",
+      "name": "Cakes",
+      "url": "https://photorecipes.blob.core.windows.net/photo-categories/Cake.png"
+    },
+    "servings": 8,
+    "steps": 5,
+    "difficulty": "Easy",
+    "quantityIngredients": 10,
+    "ingredients": [
+      {
+        "name": "Flour",
+        "quantity": "400g"
+      },
+      {
+        "name": "Sugar",
+        "quantity": "60g"
+      },
+      {
+        "name": "Vanilla sugar",
+        "quantity": "2 tsp"
+      },
+      {
+        "name": "Butter",
+        "quantity": "250g"
+      },
+      {
+        "name": "Baking powder",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Egg",
+        "quantity": "1"
+      },
+      {
+        "name": "Apples",
+        "quantity": "1,5kg"
+      },
+      {
+        "name": "Cinnamon",
+        "quantity": "2 tsp"
+      },
+      {
+        "name": "Lemon juice",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Almond flakes",
+        "quantity": "50g"
+      }
+    ],
+    "instructions": [
+      {
+        "name": "Step 1",
+        "manual": "Put flour, 30g sugar, vanilla sugar, butter, baking powder and egg into a bowl and knead the dough."
+      },
+      {
+        "name": "Step 2",
+        "manual": "Put 1/3 of the dough into the freezer. Put the rest of the dough on a baking tray and bake for 12 minutes in the oven at 180 degrees."
+      },
+      {
+        "name": "Step 3",
+        "manual": "Grate apples, sprinkle with lemon juice and mix. Put in a pan, pour 2 tablespoons of water. Add sugar, cinnamon and mix. Fry until evaporation. Cool it."
+      },
+      {
+        "name": "Step 4",
+        "manual": "Put the apples on the baked dough. Grate the rest of the dough and sprinkle with almond flakes. Bake 45 minutes at 175 degrees."
+      },
+      {
+        "name": "Step 5",
+        "manual": "Your apple cake is ready. Enjoy!"
+      }
+    ],
+    "img": "https://photorecipes.blob.core.windows.net/recipes/AppleCake.jpg"
+  },
+  {
+    "recipeId": "624c48ecb62b70399ec63e92",
+    "name": "Pavlova",
+    "time": 120,
+    "category": {
+      "id": "624c4314fa5c324421899f1b",
+      "name": "Meringues",
+      "url": "https://photorecipes.blob.core.windows.net/photo-categories/Meringue.png"
+    },
+    "servings": 6,
+    "steps": 6,
+    "difficulty": "Medium",
+    "quantityIngredients": 7,
+    "ingredients": [
+      {
+        "name": "Egg whites",
+        "quantity": "6"
+      },
+      {
+        "name": "Sugar",
+        "quantity": "240g"
+      },
+      {
+        "name": "Potato starch",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Lemon juice",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "Pinch of"
+      },
+      {
+        "name": "Whipping cream 36%",
+        "quantity": "200ml"
+      },
+      {
+        "name": "Raspberries",
+        "quantity": "250g"
+      }
+    ],
+    "instructions": [
+      {
+        "name": "Step 1",
+        "manual": "Whip the egg whites with a pinch of salt. After 3 minutes, start adding sugar gradually. Add lemon juice and potato starch and whip a few more minutes. "
+      },
+      {
+        "name": "Step 2",
+        "manual": "Make a circle with whipped egg whites on the baking sheet and put in the oven preheated to 150 degrees. After 7 minutes, reduce the temperature to 110 degrees and dry it for 100 minutes. After baking, leave it in the oven for next 30 minutes. "
+      },
+      {
+        "name": "Step 3",
+        "manual": "Whip the cream with 2 tablespoons sugar. "
+      },
+      {
+        "name": "Step 4",
+        "manual": "Blend raspberries."
+      },
+      {
+        "name": "Step 5",
+        "manual": "Take meringue from the oven, put the whipped cream on the top and pour over the raspberry mousse."
+      },
+      {
+        "name": "Step 6",
+        "manual": "Your Pavlova is ready. Enjoy!"
+      }
+    ],
+    "img": "https://photorecipes.blob.core.windows.net/recipes/Pavlova.JPG"
+  },
+  {
+    "recipeId": "624c48edf62b70399red3e92",
+    "name": "Carrot muffins",
+    "time": 60,
+    "category": {
+      "id": "624ae0082f6c36aa0f8aa722",
+      "name": "Muffins",
+      "url": "https://photorecipes.blob.core.windows.net/photo-categories/Muffin.png"
+    },
+    "servings": 14,
+    "steps": 4,
+    "difficulty": "Easy",
+    "quantityIngredients": 12,
+    "ingredients": [
+      {
+        "name": "Carrots",
+        "quantity": "6"
+      },
+      {
+        "name": "Flour",
+        "quantity": "350g"
+      },
+      {
+        "name": "Baking powder",
+        "quantity": "1.5 tsp"
+      },
+      {
+        "name": "Baking soda",
+        "quantity": "0.5 tsp"
+      },
+      {
+        "name": "Salt",
+        "quantity": "Pinch of"
+      },
+      {
+        "name": "Cinnamon",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Ginger",
+        "quantity": "0.5 tsp"
+      },
+      {
+        "name": "Nutmeg",
+        "quantity": "0.5 tsp"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "4"
+      },
+      {
+        "name": "Brown sugar",
+        "quantity": "180g"
+      },
+      {
+        "name": "Vanilla sugar",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      {
+        "name": "Step 1",
+        "manual": "Grate the carrots, sift the dry ingredients into a bowl."
+      },
+      {
+        "name": "Step 2",
+        "manual": "In another bowl mix oil, eggs, sugar, grated carrots and vanilla sugar. Add dry ingredients and mix. "
+      },
+      {
+        "name": "Step 3",
+        "manual": "Put the mass into disposable muffins cups and bake 25 minutes at 180 degrees."
+      },
+      {
+        "name": "Step 4",
+        "manual": "Carrot muffins are ready. Enjoy!"
+      }
+    ],
+    "img": "https://photorecipes.blob.core.windows.net/recipes/CarrotMuffins.jpg"
+  },
+  {
+    "recipeId": "62gr8edf62b703refed3e92",
+    "name": "Chocolate muffins",
+    "time": 60,
+    "category": {
+      "id": "624ae0082f6c36aa0f8aa722",
+      "name": "Muffins",
+      "url": "https://photorecipes.blob.core.windows.net/photo-categories/Muffin.png"
+    },
+    "servings": 16,
+    "steps": 4,
+    "difficulty": "Easy",
+    "quantityIngredients": 10,
+    "ingredients": [
+      {
+        "name": "Butter",
+        "quantity": "150g"
+      },
+      {
+        "name": "Chocolate",
+        "quantity": "150g"
+      },
+      {
+        "name": "Baking powder",
+        "quantity": "2 tsp"
+      },
+      {
+        "name": "Baking soda",
+        "quantity": "0.5 tsp"
+      },
+      {
+        "name": "Cocoa",
+        "quantity": "3 tbsp"
+      },
+      {
+        "name": "Sugar",
+        "quantity": "200g"
+      },
+      {
+        "name": "Vanilla sugar",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      },
+      {
+        "name": "Milk",
+        "quantity": "170ml"
+      }
+    ],
+    "instructions": [
+      {
+        "name": "Step 1",
+        "manual": "Melt the butter and cut the chocolate into small pieces.  Sift the flour into a bowl together with baking powder, baking soda, cocoa and mix. Add sugar and vanilla sugar, mix again, set aside."
+      },
+      {
+        "name": "Step 2",
+        "manual": "Mix the eggs with the milk in another bowl. Add the egg mass to the dry ingredients and mix gently with a spoon. Add melted butter, mix, add chocolate pieces at the end. Mix. "
+      },
+      {
+        "name": "Step 3",
+        "manual": "Put the mass into disposable muffins cups and bake 20-25 minutes at 180 degrees."
+      },
+      {
+        "name": "Step 4",
+        "manual": "Chocolate muffins are ready. Enjoy!"
+      }
+    ],
+    "img": "https://photorecipes.blob.core.windows.net/recipes/ChocolateMuffins.JPG"
+  },
+  {
+    "recipeId": "62gr8edfss2b703refed3e92",
+    "name": "Cake with blueberries",
+    "time": 40,
+    "category": {
+      "id": "624adffe2f6c36aa0f8aa721",
+      "name": "Cakes",
+      "url": "https://photorecipes.blob.core.windows.net/photo-categories/Cake.png"
+    },
+    "servings": 10,
+    "steps": 4,
+    "difficulty": "Easy",
+    "quantityIngredients": 8,
+    "ingredients": [
+      {
+        "name": "Flour",
+        "quantity": "400g"
+      },
+      {
+        "name": "Baking powder",
+        "quantity": "2 tsp"
+      },
+      {
+        "name": "Baking soda",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "5"
+      },
+      {
+        "name": "Sugar",
+        "quantity": "75g"
+      },
+      {
+        "name": "Oil",
+        "quantity": "60ml"
+      },
+      {
+        "name": "Milk",
+        "quantity": "120ml"
+      },
+      {
+        "name": "Blueberries",
+        "quantity": "300g"
+      }
+    ],
+    "instructions": [
+      {
+        "name": "Step 1",
+        "manual": "Sift the flour, baking powder and baking soda into a small bowl."
+      },
+      {
+        "name": "Step 2",
+        "manual": "Whip the eggs with the sugar. While mixing, add the oil, pour in the milk and add dry ingredients. Mix."
+      },
+      {
+        "name": "Step 3",
+        "manual": "Pour the dough into the mold. Put the blueberries on top. Bake 40 minutes at 180 degrees. After it has cooled down, sprinkle the cake with powdered sugar."
+      },
+      {
+        "name": "Step 4",
+        "manual": "Your cake is ready. Enjoy!"
+      }
+    ],
+    "img": "https://photorecipes.blob.core.windows.net/recipes/CakeWithBlueberries.JPG"
+  },
+  {
+    "recipeId": "62gr8effss2b703refed3e92",
+    "name": "Molehill",
+    "time": 200,
+    "category": {
+      "id": "624adffe2f6c36aa0f8aa721",
+      "name": "Cakes",
+      "url": "https://photorecipes.blob.core.windows.net/photo-categories/Cake.png"
+    },
+    "servings": 14,
+    "steps": 4,
+    "difficulty": "Medium",
+    "quantityIngredients": 12,
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      },
+      {
+        "name": "Sugar",
+        "quantity": "280g"
+      },
+      {
+        "name": "Flour",
+        "quantity": "330g"
+      },
+      {
+        "name": "Milk",
+        "quantity": "250ml"
+      },
+      {
+        "name": "Oil",
+        "quantity": "180g"
+      },
+      {
+        "name": "Cocoa",
+        "quantity": "30g"
+      },
+      {
+        "name": "Baking powder",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Whipping cream",
+        "quantity": "1000ml"
+      },
+      {
+        "name": "Bananas",
+        "quantity": "4"
+      },
+      {
+        "name": "Gelatin",
+        "quantity": "15g"
+      },
+      {
+        "name": "Water",
+        "quantity": "70ml"
+      },
+      {
+        "name": "Dark chocolate",
+        "quantity": "120g"
+      }
+    ],
+    "instructions": [
+      {
+        "name": "Step 1",
+        "manual": "Whip the eggs with 200g of sugar. Add flour, milk, oil, cocoa, baking powder and mix. Drop in the cake pan and bake 50 minutes at 170 degrees. After baking, let it cool down."
+      },
+      {
+        "name": "Step 2",
+        "manual": "Whip cream with 80g of sugar. At the end of whipping, add the gelatin previously dissolved in water. Chop the chocolate and add to the cream. Put in the refrigerator for 10 minutes."
+      },
+      {
+        "name": "Step 3",
+        "manual": "Cut the top of the cake and crumble. Dig out the center of the dough and crumble it too. Put the sliced bananas inside and put whipped cream with chocolate on it making a mound. Sprinkle all with the crumbled cake. "
+      },
+      {
+        "name": "Step 4",
+        "manual": "Your Molehill cake is ready, enjoy!"
+      }
+    ],
+    "img": "https://photorecipes.blob.core.windows.net/recipes/Molehill.jpg"
+  },
+  {
+    "recipeId": "62gr8effss26578237fed3e92",
+    "name": "Chocolate hearts",
+    "time": 300,
+    "category": {
+      "id": "624ae01f2f6c36aa0f8aa724",
+      "name": "Others",
+      "url": "https://photorecipes.blob.core.windows.net/photo-categories/Others.png"
+    },
+    "servings": 8,
+    "steps": 6,
+    "difficulty": "Hard",
+    "quantityIngredients": 8,
+    "ingredients": [
+      {
+        "name": "Whipping cream",
+        "quantity": "250ml"
+      },
+      {
+        "name": "Milk chocolate",
+        "quantity": "50g"
+      },
+      {
+        "name": "Dark chocolate",
+        "quantity": "50g"
+      },
+      {
+        "name": "Gelatin",
+        "quantity": "12g"
+      },
+      {
+        "name": "Sugar",
+        "quantity": "110g"
+      },
+      {
+        "name": "Cocoa",
+        "quantity": "25g"
+      },
+      {
+        "name": "Raspberries",
+        "quantity": "120g"
+      },
+      {
+        "name": "Lemon juice",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      {
+        "name": "Step 1",
+        "manual": "Heat the raspberries in a pot with sugar and lemon juice. Remove from the burner, blend everything to a puree. Add gelatine and stir until dissolved. Pour the raspberry mass evenly into six small molds. Store in the freezer."
+      },
+      {
+        "name": "Step 2",
+        "manual": "Melt both chocolate and 50 ml of whipping cream. Add gelatine, mix."
+      },
+      {
+        "name": "Step 3",
+        "manual": "Leave the chocolate mass to cool down, and during this time whip the cream. Add the whipped cream to the slightly warm chocolate mixture."
+      },
+      {
+        "name": "Step 4",
+        "manual": "Pour the chocolate mousse into the molds. Place the raspberry jelly on top. Cover the top with the rest of the chocolate mousse, covering the jelly. Store the desserts in the freezer."
+      },
+      {
+        "name": "Step 5",
+        "manual": "Put 30ml of water, sugar, cocoa and whipping cream in a pot. Heat everything until the sugar dissolves and bring to a boil. Remove from the burner, add gelatin and mix. Take the desserts out of the freezer and pour it over them."
+      },
+      {
+        "name": "Step 6",
+        "manual": "You can decorate the desserts with raspberries and it's ready. Enjoy!"
+      }
+    ],
+    "img": "https://photorecipes.blob.core.windows.net/recipes/Hearts.jpg"
+  }
+]
